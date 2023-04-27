@@ -21,5 +21,19 @@ namespace NashvilleJams.Controllers
         {
             return Ok(_userGenreRepository.GetAllUserGenres());
         }
+
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var userGenre = _userGenreRepository.GetUserGenreById(id);
+            if (userGenre == null)
+            {
+                return NotFound();
+            }
+            return Ok(userGenre);
+        }
+
+
     }
 }

@@ -6,5 +6,6 @@ namespace NashvilleJams.Repository
     public interface IUserGenreRepository
     {
         public List<UserGenre> GetAllUserGenres();
+        public UserGenre GetUserGenreById(int id);
     }
 }

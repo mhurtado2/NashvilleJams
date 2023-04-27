@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 using NashvilleJams.Model;
 using NashvilleJams.Utils;
 using System.Collections.Generic;
@@ -40,6 +41,43 @@ namespace NashvilleJams.Repository
             }
         }
 
+        public UserGenre GetUserGenreById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            SELECT Id, UserId, GenreId
+                            FROM UserGenre
+                              WHERE id = @id";
 
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+
+
+                        if (reader.Read())
+                        {
+                            UserGenre userGenre = new UserGenre
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                UserId = DbUtils.GetInt(reader, "UserId"),
+                                GenreId = DbUtils.GetInt(reader, "GenreId")
+                            };
+                            return userGenre;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+
+                }
+
+            }
+        }
     }
 }
