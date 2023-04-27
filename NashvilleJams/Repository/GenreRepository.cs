@@ -2,6 +2,7 @@
 using NashvilleJams.Model;
 using System.Collections.Generic;
 using NashvilleJams.Utils;
+using Microsoft.Data.SqlClient;
 
 namespace NashvilleJams.Repository
 {
@@ -38,5 +39,45 @@ namespace NashvilleJams.Repository
                 }
             }
         }
+
+        public Genre GetGenreById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                              SELECT Id, Name
+                              FROM Genre
+                              WHERE id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+
+
+                        if (reader.Read())
+                        {
+                            Genre genre = new Genre
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Name = DbUtils.GetString(reader, "Name")
+                            };
+                            return genre;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+
     }
 }

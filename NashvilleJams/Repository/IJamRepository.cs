@@ -8,5 +8,6 @@ namespace NashvilleJams.Repository
     public interface IJamRepository
     {
         public List<Jam> GetAllJams();
+        public Jam GetJamById(int id);
     }
 }

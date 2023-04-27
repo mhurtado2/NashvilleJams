@@ -21,5 +21,16 @@ namespace NashvilleJams.Controllers
         {
             return Ok(_areaOfTownRepository.GetAllAreas());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var area = _areaOfTownRepository.GetAreaById(id);
+            if (area == null)
+            {
+                return NotFound();
+            }
+            return Ok(area);
+        }
     }
 }

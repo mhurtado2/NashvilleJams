@@ -21,5 +21,16 @@ namespace NashvilleJams.Controllers
         {
             return Ok(_jamRepository.GetAllJams());
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var jam = _jamRepository.GetJamById(id);
+            if (jam == null)
+            {
+                return NotFound();
+            }
+            return Ok(jam);
+        }
     }
 }

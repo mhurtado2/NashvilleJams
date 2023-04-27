@@ -21,5 +21,18 @@ namespace NashvilleJams.Controllers
         {
             return Ok(_userRepository.GetAllUsers());
         }
+
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var user = _userRepository.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
+
     }
 }

@@ -7,5 +7,6 @@ namespace NashvilleJams.Repository
     public interface IGenreRepository
     {
         public List<Genre> GetAllGenres();
+        public Genre GetGenreById(int id);
     }
 }

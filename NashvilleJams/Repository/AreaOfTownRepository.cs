@@ -2,6 +2,8 @@
 using NashvilleJams.Model;
 using System.Collections.Generic;
 using NashvilleJams.Utils;
+using Azure;
+using Microsoft.Data.SqlClient;
 
 namespace NashvilleJams.Repository
 {
@@ -37,5 +39,45 @@ namespace NashvilleJams.Repository
                 }
             }
         }
+
+        public AreaOfTown GetAreaById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                              SELECT Id, Name
+                             FROM AreaOfTown
+                              WHERE id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+
+
+                        if (reader.Read())
+                        {
+                            AreaOfTown area = new AreaOfTown
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Name = DbUtils.GetString(reader, "Name")
+                            };
+                            return area;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+
     }
 }
