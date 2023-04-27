@@ -31,6 +31,9 @@ namespace NashvilleJams
         {
             services.AddTransient<IJamRepository, JamRepository>();
             services.AddTransient<IAreaOfTownRepository, AreaOfTownRepository>();
+            services.AddTransient<IGenreRepository, GenreRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserGenreRepository, UserGenreRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
