@@ -6,6 +6,8 @@ namespace NashvilleJams.Repository
     public interface IUserRepository
     {
         public List<User> GetAllUsers();
-        public User GetUserById(int id);
+        //public User GetUserById(int id);
+        public User GetByFirebaseUserId(string firebaseUserId);
+        public void Add(User userProfile);
     }
 }

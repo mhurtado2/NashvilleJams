@@ -43,7 +43,47 @@ namespace NashvilleJams.Repository
         }
 
 
-        public User GetUserById(int id)
+        //public User GetUserById(int id)
+        //{
+        //    using (var conn = Connection)
+        //    {
+        //        conn.Open();
+        //        using (var cmd = conn.CreateCommand())
+        //        {
+        //            cmd.CommandText = @"
+        //                      SELECT Id, FullName, Email, FireBaseUserId 
+        //                      FROM [User]
+        //                      WHERE id = @id";
+
+        //            cmd.Parameters.AddWithValue("@id", id);
+        //            using (SqlDataReader reader = cmd.ExecuteReader())
+        //            {
+
+
+
+        //                if (reader.Read())
+        //                {
+        //                    User user = new User
+        //                    {
+        //                        Id = DbUtils.GetInt(reader, "Id"),
+        //                        FullName = DbUtils.GetString(reader, "FullName"),
+        //                        Email = DbUtils.GetString(reader, "Email"),
+        //                        FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
+        //                    };
+        //                    return user;
+        //                }
+        //                else
+        //                {
+        //                    return null;
+        //                }
+        //            }
+
+        //        }
+
+        //    }
+        //}
+
+        public User GetByFirebaseUserId(string firebaseUserId)
         {
             using (var conn = Connection)
             {
@@ -51,36 +91,49 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                              SELECT Id, FullName, Email, FireBaseUserId 
+                       SELECT Id, FullName, Email, FireBaseUserId 
                               FROM [User]
-                              WHERE id = @id";
+                         WHERE FireBaseUserId = @FireBaseUserId";
 
-                    cmd.Parameters.AddWithValue("@id", id);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    DbUtils.AddParameter(cmd, "@FireBaseUserId", firebaseUserId);
+
+                    User userProfile = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
                     {
-
-
-
-                        if (reader.Read())
+                        userProfile = new User()
                         {
-                            User user = new User
-                            {
-                                Id = DbUtils.GetInt(reader, "Id"),
-                                FullName = DbUtils.GetString(reader, "FullName"),
-                                Email = DbUtils.GetString(reader, "Email"),
-                                FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
-                            };
-                            return user;
-                        }
-                        else
-                        {
-                            return null;
-                        }
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            FullName = DbUtils.GetString(reader, "FullName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
+                        };
                     }
+                    reader.Close();
 
+                    return userProfile;
                 }
-
             }
         }
+
+        public void Add(User userProfile)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO [User] (FireBaseUserId, FullName, Email)
+                                        OUTPUT INSERTED.ID
+                                        VALUES (@FireBaseUserId, @FullName, @Email)";
+                    DbUtils.AddParameter(cmd, "@FireBaseUserId", userProfile.FireBaseUserId);
+                    DbUtils.AddParameter(cmd, "@Name", userProfile.FullName);
+                    DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
+                    userProfile.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
     }
 }
