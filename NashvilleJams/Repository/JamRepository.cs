@@ -4,6 +4,8 @@ using NashvilleJams.Model;
 using System.Collections.Generic;
 using NashvilleJams.Utils;
 using Microsoft.Data.SqlClient;
+using Azure;
+using Microsoft.Extensions.Hosting;
 
 
 namespace NashvilleJams.Repository
@@ -19,8 +21,11 @@ namespace NashvilleJams.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, JamName, VenueName, ImageUrl, Address, GenreId, UserId, AreaOfTownId
-                       FROM Jam";
+                    cmd.CommandText = @"SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId,
+                    u.Id as UserID, u.FullName, u.Email, u.FireBaseUserID
+                       
+                       FROM Jam j
+                       LEFT JOIN [User] u on u.Id = j.UserId";
                     var reader = cmd.ExecuteReader();
 
                     var jams = new List<Jam>();
@@ -37,6 +42,13 @@ namespace NashvilleJams.Repository
                             GenreId = DbUtils.GetInt(reader, "GenreId"),
                             UserId = DbUtils.GetInt(reader, "UserId"),
                             AreaOfTownId = DbUtils.GetInt(reader, "AreaOfTownId"),
+                            User = new User
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                FullName = DbUtils.GetString(reader, "FullName"),
+                                Email = DbUtils.GetString(reader, "Email"),
+                                FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
+                            }
                         });
                     }
 
@@ -86,6 +98,84 @@ namespace NashvilleJams.Repository
 
                 }
 
+            }
+        }
+
+
+        public void AddJam(Jam jam)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Jam (JamName, VenueName, ImageUrl, Address, GenreId, UserId, AreaOfTownId)
+                        OUTPUT INSERTED.ID
+                        VALUES (@JamName, @VenueName, @ImageUrl, @Address, @GenreId, @UserId, @AreaOfTownId)";
+
+                    DbUtils.AddParameter(cmd, "@JamName", jam.JamName);
+                    DbUtils.AddParameter(cmd, "@VenueName", jam.VenueName);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", jam.ImageUrl);
+                    DbUtils.AddParameter(cmd, "@Address", jam.Address);
+                    DbUtils.AddParameter(cmd, "@GenreId", jam.GenreId);
+                    DbUtils.AddParameter(cmd, "@UserId", jam.UserId);
+                    DbUtils.AddParameter(cmd, "@AreaOfTownId", jam.AreaOfTownId);
+
+                    jam.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+        public void UpdateJam(Jam jam)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE Jam
+                            SET 
+                            JamName = @jamName,
+                            VenueName = @venueName,
+                            ImageUrl = @imageUrl,
+                            Address = @address,
+                            GenreId = @genreId,
+                            UserId = @userId,
+                            AreaOfTownId = @areaOfTownId
+                            WHERE Id = @id" ;
+
+                    DbUtils.AddParameter(cmd, "@id", jam.Id);
+                    cmd.Parameters.AddWithValue("@jamName", jam.JamName);
+                    cmd.Parameters.AddWithValue("@venueName", jam.VenueName);
+                    cmd.Parameters.AddWithValue("@imageUrl", jam.ImageUrl);
+                    cmd.Parameters.AddWithValue("@address", jam.Address);
+                    cmd.Parameters.AddWithValue("@genreId", jam.GenreId);
+                    cmd.Parameters.AddWithValue("@userId", jam.UserId);
+                    cmd.Parameters.AddWithValue("@areaOfTownId", jam.AreaOfTownId);
+
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteJam(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"DELETE FROM Jam WHERE Id = @id;";
+                                       
+
+                    DbUtils.AddParameter(cmd, "@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NashvilleJams.Model;
 using NashvilleJams.Repository;
 
 namespace NashvilleJams.Controllers
@@ -32,5 +34,34 @@ namespace NashvilleJams.Controllers
             }
             return Ok(jam);
         }
+
+        [HttpPost]
+        public IActionResult Post(Jam jam)
+        {
+
+            _jamRepository.AddJam(jam);
+            return CreatedAtAction(nameof(Get), new { id = jam.Id }, jam);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Jam jam)
+        {
+            if (id != jam.Id)
+            {
+                return BadRequest();
+            }
+
+            _jamRepository.UpdateJam(jam);
+            return NoContent();
+        }
+
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _jamRepository.DeleteJam(id);
+            return NoContent();
+        }
+
     }
 }
