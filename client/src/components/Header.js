@@ -19,7 +19,7 @@ export default function Header({ isLoggedIn, userProfile }) {
     <div>
       <Navbar color="dark" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          Grace Hopper Wisdom
+          Nashville Jams
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -28,7 +28,7 @@ export default function Header({ isLoggedIn, userProfile }) {
               <>
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/add">
-                    Add Quote
+                    Add Jam
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -59,19 +59,9 @@ export default function Header({ isLoggedIn, userProfile }) {
             )}
           </Nav>
           <Nav navbar>
-            <NavItem>
-              <a
-                aria-current="page"
-                className="nav-link"
-                href="https://www.youtube.com/watch?v=3N_ywhx6_K0"
-                target="_new"
-              >
-                Grace Hopper on Letterman
-              </a>
-            </NavItem>
             {userProfile && (
               <NavItem>
-                <NavLink>Welcome, {userProfile.name}!</NavLink>
+                <NavLink>Welcome, {userProfile.fullName}!</NavLink>
               </NavItem>
             )}
           </Nav>

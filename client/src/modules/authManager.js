@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-//changed from userProfile
 const _apiUrl = "/api/user";
 
 //might need to change to fireBaseUserId
