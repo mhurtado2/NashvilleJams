@@ -97,12 +97,12 @@ namespace NashvilleJams.Repository
 
                     DbUtils.AddParameter(cmd, "@FireBaseUserId", firebaseUserId);
 
-                    User userProfile = null;
+                    User user = null;
 
                     var reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
-                        userProfile = new User()
+                        user = new User()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             FullName = DbUtils.GetString(reader, "FullName"),
@@ -112,7 +112,7 @@ namespace NashvilleJams.Repository
                     }
                     reader.Close();
 
-                    return userProfile;
+                    return user;
                 }
             }
         }

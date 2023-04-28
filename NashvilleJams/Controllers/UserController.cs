@@ -41,25 +41,25 @@ namespace NashvilleJams.Controllers
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
-            var userProfile = _userRepository.GetByFirebaseUserId(firebaseUserId);
-            if (userProfile == null)
+            var user = _userRepository.GetByFirebaseUserId(firebaseUserId);
+            if (user == null)
             {
                 return NotFound();
             }
-            return Ok(userProfile);
+            return Ok(user);
         }
 
 
         [HttpGet("Me")]
         public IActionResult Me()
         {
-            var userProfile = GetCurrentUserProfile();
-            if (userProfile == null)
+            var user = GetCurrentUserProfile();
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(userProfile);
+            return Ok(user);
         }
 
         [HttpGet("DoesUserExist/{firebaseUserId}")]
