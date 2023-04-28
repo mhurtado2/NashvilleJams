@@ -43,6 +43,13 @@ namespace NashvilleJams.Controllers
             return CreatedAtAction(nameof(Get), new { id = jam.Id }, jam);
         }
 
+        [HttpGet("getJamCount")]
+        public IActionResult GetBikesInShopCount()
+        {
+
+            return Ok(_jamRepository.GetJamCount());
+        }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, Jam jam)
         {

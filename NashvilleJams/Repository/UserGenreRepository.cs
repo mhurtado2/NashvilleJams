@@ -49,9 +49,10 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            SELECT Id, UserId, GenreId
-                            FROM UserGenre
-                              WHERE id = @id";
+                            SELECT ug.Id, ug.UserId, ug.GenreId, g.[Name]
+                            FROM UserGenre ug
+                            LEFT JOIN Genre g on g.Id = ug.GenreId
+                              WHERE ug.id = @id";
 
                     cmd.Parameters.AddWithValue("@id", id);
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -65,7 +66,12 @@ namespace NashvilleJams.Repository
                             {
                                 Id = DbUtils.GetInt(reader, "Id"),
                                 UserId = DbUtils.GetInt(reader, "UserId"),
-                                GenreId = DbUtils.GetInt(reader, "GenreId")
+                                GenreId = DbUtils.GetInt(reader, "GenreId"),
+                                Genre = new Genre
+                                {
+                                    Id = DbUtils.GetInt(reader, "GenreId"),
+                                    Name = DbUtils.GetString(reader, "Name"),
+                                },
                             };
                             return userGenre;
                         }

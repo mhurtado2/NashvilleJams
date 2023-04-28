@@ -127,6 +127,31 @@ namespace NashvilleJams.Repository
             }
         }
 
+        public int GetJamCount()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            SELECT COUNT(*) as JamsInNashville
+                            FROM Jam
+                              ";
+
+                    var reader = cmd.ExecuteReader();
+                    int count = 0;
+
+                    if (reader.Read())
+                    {
+                        count = reader.GetInt32(reader.GetOrdinal("JamsInNashville"));
+                    }
+
+                    return count;
+                }
+            }
+        }
+
         public void UpdateJam(Jam jam)
         {
             using (SqlConnection conn = Connection)
@@ -178,6 +203,7 @@ namespace NashvilleJams.Repository
                 }
             }
         }
+
 
 
     }
