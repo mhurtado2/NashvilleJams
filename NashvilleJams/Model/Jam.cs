@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
+using System.Security.Policy;
 
 namespace NashvilleJams.Model
 {
@@ -16,5 +16,7 @@ namespace NashvilleJams.Model
         public int UserId { get; set; }
         public int AreaOfTownId { get; set; }
         public User User { get; set; }
+        public Genre Genre { get; set; }
+        public AreaOfTown AreaOfTown { get; set; }
     }
 }

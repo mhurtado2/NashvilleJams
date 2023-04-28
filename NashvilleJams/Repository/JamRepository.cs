@@ -67,9 +67,12 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                              SELECT Id, JamName, VenueName, ImageUrl, Address, GenreId, UserId, AreaOfTownId
-                              FROM Jam
-                              WHERE id = @id";
+                              SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId, g.id AS GenreId, 
+                              g.Name AS GenreName, a.Id AS AreaId, a.Name AS AreaName
+                              FROM Jam j
+                              LEFT JOIN Genre g on g.Id = j.GenreId
+                              LEFT JOIN AreaOfTown a on a.Id = j.AreaOfTownId
+                              WHERE j.Id = @id";
 
                     cmd.Parameters.AddWithValue("@id", id);
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -87,6 +90,17 @@ namespace NashvilleJams.Repository
                                 GenreId = DbUtils.GetInt(reader, "GenreId"),
                                 UserId = DbUtils.GetInt(reader, "UserId"),
                                 AreaOfTownId = DbUtils.GetInt(reader, "AreaOfTownId"),
+                                Genre = new Genre
+                                {
+                                    Id = DbUtils.GetInt(reader, "GenreId"),
+                                    Name = DbUtils.GetString(reader, "GenreName"),
+                                },
+                                AreaOfTown = new AreaOfTown
+                                {
+                                    Id = DbUtils.GetInt(reader, "AreaId"),
+                                    Name = DbUtils.GetString(reader, "AreaName"),
+                                }
+
                             };
                             return jam;
                         }
