@@ -1,47 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { getAllAreas } from '../modules/areaManager';
 import { getAllGenres } from '../modules/genreManager';
-import { getJamById, updateJam } from '../modules/jamManager';
+import { addJam } from '../modules/jamManager';
 
 
-const JamEdit = () => {
 
-  const [jam, setJam] = useState();
+const JamForm = ({ getJam }) => {
+  const emptyJam = {
+    jamName: '',
+    venueName: '',
+    address: '',
+    imageUrl: '',
+    userId: 0,
+    genreId: 0,
+    areaOfTownId:0
+  };
 
+  const [jam, setJam] = useState(emptyJam);
   const [genres, setGenres] = useState([]);
   const [areas, setAreas] = useState([]);
-  const { id } = useParams();
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    getJamById(id).then(setJam);
+    getAllAreas().then(setAreas);
+    getAllGenres().then(setGenres);
 }, []);
-
-
-  useEffect(() => {
-      getAllAreas().then(setAreas);
-      getAllGenres().then(setGenres);
-      getJamById(id).then(setJam);
-  }, []);
-
-
 
 
   const handleInputChange = (evt) => {
     const value = evt.target.value;
-    const checked = evt.target.checked;
+
     const key = evt.target.id;
 
     const jamCopy = { ...jam };
 
-    if (evt.target.type === "checkbox") {
-        jamCopy[key] = checked ? parseInt(value) : null;
-      } else {
-        jamCopy[key] = value;
-      }
-  
+
+    jamCopy[key] = value;
 
     setJam(jamCopy);
   };
@@ -49,19 +46,16 @@ const JamEdit = () => {
   const handleSave = (evt) => {
     evt.preventDefault();
 
-    updateJam(jam).then((p) => {
+    addJam(jam).then((p) => {
         // Navigate the user back to the home route
         navigate("/");
     });
   };
 
-  if (!jam) {
-    return null;
-  }
-
   return (
-    <Form>
+<Form>
       <FormGroup>
+        <>
         <Label for="jamName">Jam Name</Label>
         <textarea type="text" name="jamName" id="jamName" className='form-control'
           value={jam.jamName}
@@ -82,11 +76,9 @@ const JamEdit = () => {
           value={jam.imageUrl}
           onChange={handleInputChange} /> 
 
-<div>Genre</div>
-
 {genres.map((genre) => {
           return (
-            <FormGroup key={genre.id} defaultChecked>
+            <FormGroup key={genre.id} checked>
               <Input
                 type="checkbox"
                 id={genre.id}
@@ -100,12 +92,9 @@ const JamEdit = () => {
           );
         })}
 
-
-<div>Area</div>
-
 {areas.map((area) => {
           return (
-            <FormGroup key={area.id} defaultChecked>
+            <FormGroup key={area.id} checked>
               <Input
                 type="checkbox"
                 id={area.id}
@@ -117,9 +106,8 @@ const JamEdit = () => {
               <Label>{area.name}</Label>
             </FormGroup>
           );
-        })}
-
-        
+        })}  
+        </>
       </FormGroup>
       <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
       <Button className="btn btn-primary" onClick={() => navigate("/")}>Cancel</Button>
@@ -127,4 +115,4 @@ const JamEdit = () => {
   );
 };
 
-export default JamEdit;
+export default JamForm;

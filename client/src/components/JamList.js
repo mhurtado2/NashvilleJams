@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
-import { getAllJams } from "../modules/jamManager";
+import { deleteJam, getAllJams } from "../modules/jamManager";
 import Jam from "./Jam";
 
 
@@ -28,7 +28,7 @@ const navigate = useNavigate();
             <React.Fragment key={jam.id}>
           <Jam jam={jam} />
           <Button className="editBtn" onClick={() => navigate(`${jam.id}`)}>Edit</Button>
-          <Button className="deleteBtn" onClick={ ()=> navigate(`delete/${jam.id}`)}>Delete</Button>
+          <Button className="deleteBtn" onClick={ ()=> deleteJam(`${jam.id}`)}>Delete</Button>
           </React.Fragment>
         ))}
       </div>

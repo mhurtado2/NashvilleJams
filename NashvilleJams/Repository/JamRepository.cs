@@ -124,16 +124,15 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Jam (JamName, VenueName, ImageUrl, Address, GenreId, UserId, AreaOfTownId)
+                        INSERT INTO Jam (JamName, VenueName, ImageUrl, Address, GenreId, AreaOfTownId)
                         OUTPUT INSERTED.ID
-                        VALUES (@JamName, @VenueName, @ImageUrl, @Address, @GenreId, @UserId, @AreaOfTownId)";
+                        VALUES (@JamName, @VenueName, @ImageUrl, @Address, @GenreId, @AreaOfTownId)";
 
                     DbUtils.AddParameter(cmd, "@JamName", jam.JamName);
                     DbUtils.AddParameter(cmd, "@VenueName", jam.VenueName);
                     DbUtils.AddParameter(cmd, "@ImageUrl", jam.ImageUrl);
                     DbUtils.AddParameter(cmd, "@Address", jam.Address);
                     DbUtils.AddParameter(cmd, "@GenreId", jam.GenreId);
-                    DbUtils.AddParameter(cmd, "@UserId", jam.UserId);
                     DbUtils.AddParameter(cmd, "@AreaOfTownId", jam.AreaOfTownId);
 
                     jam.Id = (int)cmd.ExecuteScalar();
@@ -182,7 +181,6 @@ namespace NashvilleJams.Repository
                             ImageUrl = @imageUrl,
                             Address = @address,
                             GenreId = @genreId,
-                            UserId = @userId,
                             AreaOfTownId = @areaOfTownId
                             WHERE Id = @id" ;
 
@@ -192,7 +190,6 @@ namespace NashvilleJams.Repository
                     cmd.Parameters.AddWithValue("@imageUrl", jam.ImageUrl);
                     cmd.Parameters.AddWithValue("@address", jam.Address);
                     cmd.Parameters.AddWithValue("@genreId", jam.GenreId);
-                    cmd.Parameters.AddWithValue("@userId", jam.UserId);
                     cmd.Parameters.AddWithValue("@areaOfTownId", jam.AreaOfTownId);
 
 
