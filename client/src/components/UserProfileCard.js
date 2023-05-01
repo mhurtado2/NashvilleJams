@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 
 
+
 const UserProfileCard = ({ user }) => {
 
   return (
@@ -21,7 +22,7 @@ const UserProfileCard = ({ user }) => {
           {user.fullName}
         </div>
         <div>{user.email}</div>  
-        <div>{user.genre?.map()}</div>  
+        <div>{user.Genre?.map()}</div>  
       </CardBody>
     </Card>
   );

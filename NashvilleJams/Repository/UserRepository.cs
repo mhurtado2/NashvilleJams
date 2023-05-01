@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using NashvilleJams.Model;
 using NashvilleJams.Utils;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NashvilleJams.Repository
 {
@@ -11,6 +12,7 @@ namespace NashvilleJams.Repository
 
         public UserRepository(IConfiguration config) : base(config) { }
 
+        //getallusers is messed up
         public List<User> GetAllUsers()
         {
             using (var conn = Connection)
@@ -18,9 +20,11 @@ namespace NashvilleJams.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT u.Id, u.FullName, u.Email, u.FireBaseUserId
-                       FROM [User] u
-                       LEFT JOIN UserGenre ug on ug.UserId = u.Id ";
+                    cmd.CommandText = @"SELECT u.Id, u.FullName, u.Email, u.FireBaseUserId, ug.UserId as UserId,
+                        ug.GenreId as GenreId, g.Name, g.Id as RandomId
+                        FROM [User] u
+                       LEFT JOIN UserGenre ug on ug.UserId = u.Id
+                       LEFT JOIN Genre g on g.Id = ug.GenreId";
                     var reader = cmd.ExecuteReader();
 
                     var users = new List<User>();
@@ -33,6 +37,16 @@ namespace NashvilleJams.Repository
                             FullName = DbUtils.GetString(reader, "FullName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
+                            UserGenre = new UserGenre
+                            {
+                                UserId = DbUtils.GetInt(reader, "UserId"),
+                                GenreId = DbUtils.GetInt(reader, "GenreId"),
+                            },
+                            Genre = new Genre
+                            {
+                                Id = DbUtils.GetInt(reader, "RandomId"),
+                                Name = DbUtils.GetString(reader, "Name"),
+                            }
                         });
                     }
 
@@ -42,6 +56,8 @@ namespace NashvilleJams.Repository
                 }
             }
         }
+
+       
 
 
         //public User GetUserById(int id)
@@ -83,6 +99,7 @@ namespace NashvilleJams.Repository
 
         //    }
         //}
+
 
         public User GetByFirebaseUserId(string firebaseUserId)
         {
