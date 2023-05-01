@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import { deleteJam, getAllJams, getJamById } from "../modules/jamManager";
-import Jam from "./Jam";
+import { deleteJam, getJamById } from "../modules/jamManager";
+import JamDeets from "./JamDeets";
 
 
 const JamDetails = () => {
@@ -35,7 +35,7 @@ const { id } = useParams();
                     Cancel
                 </Button>
                 <Button
-                    className="btn btn-danger m-4"
+                    className="btn btn-danger deleteBtn m-4"
                     onClick={() => {
                         deleteJam(id);
                         navigate(`/`);
@@ -52,7 +52,7 @@ const { id } = useParams();
     <div className="container">
 
       <div className="row justify-content-center">
-          <Jam jam={jam} />
+          <JamDeets jam={jam} />
           <Button className="editBtn" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
           <Button
                     className="btn btn-danger m-4"

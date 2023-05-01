@@ -30,18 +30,22 @@ export default function Header({ isLoggedIn, userProfile }) {
                   <NavLink tag={RRNavLink} to="/blues">
                     Blues Jams
                   </NavLink>
+                </NavItem>
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/country">
                     Country Jams
                   </NavLink>
                 </NavItem>
+                <NavItem>
                   <NavLink tag={RRNavLink} to="/randb">
                     R&B Jams
                   </NavLink>
                 </NavItem>
+                <NavItem>
                   <NavLink tag={RRNavLink} to="/jazz">
                     Jazz Jams
                   </NavLink>
+                </NavItem>
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/add">
                     Add Jam

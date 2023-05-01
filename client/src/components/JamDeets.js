@@ -4,7 +4,7 @@ import { Card, CardBody } from "reactstrap";
 
 
 
-const Jam = ({ jam }) => {
+const JamDeets = ({ jam }) => {
    
   return (
     <Card >
@@ -18,10 +18,14 @@ const Jam = ({ jam }) => {
             className = "jam-img"
             />
             </div>
+            <p>Venue Name: {jam.venueName}</p>
+
+            <p>Address: {jam.address}</p>
+            
           </div>
       </CardBody>
     </Card>
   );
 };
 
-export default Jam;
+export default JamDeets;

@@ -28,8 +28,10 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="jazz" element={<JazzJam />} />
         <Route path="add" element={<JamForm />} />
         <Route path="edit" element={<JamEdit />} />
-        <Route path="details/:id" element={<JamDetails />} />
-
+        <Route path="details/:id">
+            <Route index element={<JamDetails />} />
+            <Route path="edit/:id" element={< JamEdit />} />
+          </Route>
         <Route path="*" element={<p>Whoops, nothing here...</p>} />
       </Route>
     </Routes>
