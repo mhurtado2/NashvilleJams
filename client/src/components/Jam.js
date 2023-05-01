@@ -1,13 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card, CardBody } from "reactstrap";
 
 
+
 const Jam = ({ jam }) => {
+   
   return (
     <Card >
       <CardBody>
           <p>
-            <strong>{jam.jamName}</strong>
+            <Link to={`details/${jam.id}`}>{jam.jamName}</Link>
             <img 
             src= {jam.imageUrl} 
             alt = {jam.jamName}

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import { useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
 import { deleteJam, getAllJams } from "../modules/jamManager";
 import Jam from "./Jam";
 
 
-const JamList = () => {
+const RandBJam = () => {
   const [jams, setJams] = useState([]);
+const navigate = useNavigate();
 
 //make a new function in auth manager
     const getJams = () => {
-    getAllJams().then(jams => setJams(jams));
+    getAllJams().then(jams => {
+        const filteredJams = jams.filter(jam => jam.genreId === 4)
+        setJams(filteredJams)});
   };
 
 
@@ -18,7 +21,7 @@ const JamList = () => {
     getJams();
   }, []);  //only runs on the intial rendering of the page if dependency array is empty 
 
-  
+
   return (
     <div className="container">
 
@@ -26,14 +29,14 @@ const JamList = () => {
         {jams.map((jam) => (
             <React.Fragment key={jam.id}>
           <Jam jam={jam} />
-          {/* <Button className="editBtn" onClick={() => navigate(`${jam.id}`)}>Edit</Button> */}
-          {/* <Button className="deleteBtn" onClick={ ()=> deleteJam(`${jam.id}`)}>Delete</Button> */}
-          
+          <Button className="editBtn" onClick={() => navigate(`${jam.id}`)}>Edit</Button>
+          <Button className="deleteBtn" onClick={ ()=> deleteJam(`${jam.id}`)}>Delete</Button>
           </React.Fragment>
         ))}
       </div>
+      {/* <Button onClick={() => navigate("add")}> Create a New Tag!</Button> */}
     </div>
   );
 };
 
-export default JamList;
+export default RandBJam;
