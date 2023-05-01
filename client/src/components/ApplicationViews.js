@@ -27,7 +27,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="randb" element={<RandBJam />} />
         <Route path="jazz" element={<JazzJam />} />
         <Route path="add" element={<JamForm />} />
-        <Route path="edit" element={<JamEdit />} />
+        <Route path="edit/:id" element={<JamEdit />} />
         <Route path="details/:id">
             <Route index element={<JamDetails />} />
             <Route path="edit/:id" element={< JamEdit />} />

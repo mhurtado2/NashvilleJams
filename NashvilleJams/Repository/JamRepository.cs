@@ -22,9 +22,10 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId,
-                    u.Id as UserID, u.FullName, u.Email, u.FireBaseUserID
+                    u.Id as UserID, u.FullName, u.Email, u.FireBaseUserID, a.Name as AreaName
                        
                        FROM Jam j
+                       LEFT JOIN AreaOfTown a on a.Id = j.AreaOfTownId
                        LEFT JOIN [User] u on u.Id = j.UserId";
                     var reader = cmd.ExecuteReader();
 
@@ -48,6 +49,10 @@ namespace NashvilleJams.Repository
                                 FullName = DbUtils.GetString(reader, "FullName"),
                                 Email = DbUtils.GetString(reader, "Email"),
                                 FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
+                            },
+                            AreaOfTown = new AreaOfTown
+                            {
+                                Name = DbUtils.GetString(reader, "AreaName"),
                             }
                         });
                     }

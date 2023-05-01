@@ -18,6 +18,7 @@ const Jam = ({ jam }) => {
             className = "jam-img"
             />
             </div>
+            <div>Area Of Town: {jam.areaOfTown?.name}</div>
           </div>
       </CardBody>
     </Card>

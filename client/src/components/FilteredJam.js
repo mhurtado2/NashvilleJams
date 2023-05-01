@@ -4,7 +4,7 @@ import { Card, CardBody } from "reactstrap";
 
 
 
-const JamDeets = ({ jam }) => {
+const FilteredJam = ({ jam }) => {
    
   return (
     <Card >
@@ -19,7 +19,6 @@ const JamDeets = ({ jam }) => {
             />
             </div>
             <p>Venue Name : {jam.venueName}</p>
-            <p>Genre : {jam.genre?.name}</p>
             <p>Area Of Town : {jam.areaOfTown?.name}</p>
             <p>Address : {jam.address}</p>
             
@@ -29,4 +28,4 @@ const JamDeets = ({ jam }) => {
   );
 };
 
-export default JamDeets;
+export default FilteredJam;
