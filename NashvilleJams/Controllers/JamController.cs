@@ -1,8 +1,10 @@
 ﻿using Azure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using NashvilleJams.Model;
 using NashvilleJams.Repository;
+using System.Security.Claims;
 
 namespace NashvilleJams.Controllers
 {
@@ -11,10 +13,12 @@ namespace NashvilleJams.Controllers
     public class JamController : ControllerBase
     {
         private readonly IJamRepository _jamRepository;
+        private readonly IUserRepository _userRepository;
 
-        public JamController(IJamRepository jamRepository)
+        public JamController(IJamRepository jamRepository, IUserRepository userRepository)
         {
             _jamRepository = jamRepository;
+            _userRepository = userRepository;
         }
 
 
@@ -38,6 +42,8 @@ namespace NashvilleJams.Controllers
         [HttpPost]
         public IActionResult Post(Jam jam)
         {
+            var currentUser = GetCurrentUserProfile();
+            jam.UserId = currentUser.Id;
 
             _jamRepository.AddJam(jam);
             return CreatedAtAction(nameof(Get), new { id = jam.Id }, jam);
@@ -68,6 +74,13 @@ namespace NashvilleJams.Controllers
         {
             _jamRepository.DeleteJam(id);
             return NoContent();
+        }
+
+
+        private User GetCurrentUserProfile()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
 
     }

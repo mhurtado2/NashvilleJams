@@ -124,15 +124,16 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Jam (JamName, VenueName, ImageUrl, Address, GenreId, AreaOfTownId)
+                        INSERT INTO Jam (JamName, VenueName, ImageUrl, Address, UserId, GenreId, AreaOfTownId)
                         OUTPUT INSERTED.ID
-                        VALUES (@JamName, @VenueName, @ImageUrl, @Address, @GenreId, @AreaOfTownId)";
+                        VALUES (@JamName, @VenueName, @ImageUrl, @Address, @UserId, @GenreId, @AreaOfTownId)";
 
                     DbUtils.AddParameter(cmd, "@JamName", jam.JamName);
                     DbUtils.AddParameter(cmd, "@VenueName", jam.VenueName);
                     DbUtils.AddParameter(cmd, "@ImageUrl", jam.ImageUrl);
                     DbUtils.AddParameter(cmd, "@Address", jam.Address);
                     DbUtils.AddParameter(cmd, "@GenreId", jam.GenreId);
+                    DbUtils.AddParameter(cmd, "@UserId", jam.UserId);
                     DbUtils.AddParameter(cmd, "@AreaOfTownId", jam.AreaOfTownId);
 
                     jam.Id = (int)cmd.ExecuteScalar();

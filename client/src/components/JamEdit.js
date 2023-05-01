@@ -82,7 +82,7 @@ const JamEdit = () => {
           value={jam.imageUrl}
           onChange={handleInputChange} /> 
 
-<div>Genre</div>
+{/* <div>Genre</div>
 
 {genres.map((genre) => {
           return (
@@ -98,9 +98,20 @@ const JamEdit = () => {
               <Label>{genre.name}</Label>
             </FormGroup>
           );
-        })}
+        })} */}
+
+<Label for ="genreId">Genre</Label>
+<select id="genreId" className="form-control" value={jam.genreId} onChange={handleInputChange}>
+<option value="">-- Select Genre --</option>
+{genres.map((genre) => (
+    <option key={genre.id} value={genre.id}>
+        {genre.name}
+    </option>
+))}
+</select>
 
 
+{/* 
 <div>Area</div>
 
 {areas.map((area) => {
@@ -117,7 +128,17 @@ const JamEdit = () => {
               <Label>{area.name}</Label>
             </FormGroup>
           );
-        })}
+        })} */}
+
+<Label for ="areaOfTownId">Area Of Town</Label>
+<select id="areaOfTownId" className="form-control" value={jam.areaOfTownId} onChange={handleInputChange}>
+<option value="">-- Select Area Of Town --</option>
+{areas.map((area) => (
+    <option key={area.id} value={area.id}>
+        {area.name}
+    </option>
+))}
+</select>
 
         
       </FormGroup>

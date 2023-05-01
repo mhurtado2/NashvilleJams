@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.editBtn {
+  width: 250px;
+}
+
+.deleteBtn {
+  width: 250px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-content-center {
+  display: flex;
+  flex-direction: row;
+}
+
+.navBar {
+  background: red;
+}

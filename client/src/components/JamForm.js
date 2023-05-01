@@ -13,7 +13,6 @@ const JamForm = ({ getJam }) => {
     venueName: '',
     address: '',
     imageUrl: '',
-    userId: 0,
     genreId: 0,
     areaOfTownId:0
   };
@@ -76,11 +75,11 @@ const JamForm = ({ getJam }) => {
           value={jam.imageUrl}
           onChange={handleInputChange} /> 
 
-{genres.map((genre) => {
+{/* {genres.map((genre) => {
           return (
-            <FormGroup key={genre.id} checked>
+            <FormGroup key={genre.id} radio>
               <Input
-                type="checkbox"
+                type="radio"
                 id={genre.id}
                 name={genre.name}
                 value={genre.id}
@@ -90,9 +89,20 @@ const JamForm = ({ getJam }) => {
               <Label>{genre.name}</Label>
             </FormGroup>
           );
-        })}
+        })} */}
 
-{areas.map((area) => {
+<Label for ="genreId">Genre</Label>
+<select id="genreId" className="form-control" value={jam.genreId} onChange={handleInputChange}>
+<option value="">-- Select Genre --</option>
+{genres.map((genre) => (
+    <option key={genre.id} value={genre.id}>
+        {genre.name}
+    </option>
+))}
+</select>
+
+
+{/* {areas.map((area) => {
           return (
             <FormGroup key={area.id} checked>
               <Input
@@ -106,7 +116,18 @@ const JamForm = ({ getJam }) => {
               <Label>{area.name}</Label>
             </FormGroup>
           );
-        })}  
+        })}   */}
+
+<Label for ="areaOfTownId">Area Of Town</Label>
+<select id="areaOfTownId" className="form-control" value={jam.areaOfTownId} onChange={handleInputChange}>
+<option value="">-- Select Area Of Town --</option>
+{areas.map((area) => (
+    <option key={area.id} value={area.id}>
+        {area.name}
+    </option>
+))}
+</select>
+
         </>
       </FormGroup>
       <Button className="btn btn-primary" onClick={handleSave}>Save</Button>

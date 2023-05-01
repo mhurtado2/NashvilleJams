@@ -16,7 +16,7 @@ export default function Header({ isLoggedIn, userProfile }) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div className="navBar">
       <Navbar color="dark" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           Nashville Jams
