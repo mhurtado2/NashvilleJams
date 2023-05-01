@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+ background-image: url('https://th.bing.com/th/id/R.84032fded07e6811e2fb54667426e4d4?rik=ayC%2bOBAUioVevw&riu=http%3a%2f%2fblog.lipmanhomesandestates.com%2fwp-content%2fuploads%2f2014%2f01%2fnashville-runrise-mike-hicks.jpg&ehk=HqjRUYtr5lFmJdkKqT3lWZgDfweGuYEzclGg%2b%2fjJKNI%3d&risl=&pid=ImgRaw&r=0');
+ background-size: cover;
 }
 
 .App-logo {
@@ -17,7 +19,7 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -36,4 +38,7 @@
     transform: rotate(360deg);
   }
 }
+
+
+
 

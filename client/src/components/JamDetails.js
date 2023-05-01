@@ -49,11 +49,11 @@ const { id } = useParams();
 };
 
   return (
-    <div className="container">
+    <div className="container text-center">
 
-      <div className="row justify-content-center">
+      <div className="row ml-auto justify-content-center">
           <JamDeets jam={jam} />
-          <Button className="editBtn" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
+          <Button className="btn btn-success m-4" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
           <Button
                     className="btn btn-danger m-4"
                     onClick={() => {

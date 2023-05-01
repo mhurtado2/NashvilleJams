@@ -10,6 +10,8 @@ import JazzJam from "./JazzJam";
 import Login from "./Login";
 import RandBJam from "./RandBJam";
 import Register from "./Register";
+import UserProfiles from "./UserProfiles";
+
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -27,7 +29,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="randb" element={<RandBJam />} />
         <Route path="jazz" element={<JazzJam />} />
         <Route path="add" element={<JamForm />} />
-        <Route path="edit/:id" element={<JamEdit />} />
+        <Route path="users" element={<UserProfiles />} />
         <Route path="details/:id">
             <Route index element={<JamDetails />} />
             <Route path="edit/:id" element={< JamEdit />} />

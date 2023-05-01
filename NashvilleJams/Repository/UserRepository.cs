@@ -18,8 +18,9 @@ namespace NashvilleJams.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, FullName, Email, FireBaseUserId 
-                       FROM [User]";
+                    cmd.CommandText = @"SELECT u.Id, u.FullName, u.Email, u.FireBaseUserId
+                       FROM [User] u
+                       LEFT JOIN UserGenre ug on ug.UserId = u.Id ";
                     var reader = cmd.ExecuteReader();
 
                     var users = new List<User>();

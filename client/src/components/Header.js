@@ -17,13 +17,13 @@ export default function Header({ isLoggedIn, userProfile }) {
 
   return (
     <div className="navBar">
-      <Navbar color="dark" dark expand="md">
+      <Navbar color="dark" classname="m-2" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           Nashville Jams
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="m1-auto" navbar style={{ justifyContent: 'space-between', width: '100%'}}>
             {isLoggedIn && (
               <>
                 <NavItem>
@@ -49,6 +49,11 @@ export default function Header({ isLoggedIn, userProfile }) {
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/add">
                     Add Jam
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/users">
+                    User Profiles
                   </NavLink>
                 </NavItem>
                 <NavItem>

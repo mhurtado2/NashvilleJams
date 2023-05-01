@@ -7,7 +7,7 @@ import { Card, CardBody } from "reactstrap";
 const Jam = ({ jam }) => {
    
   return (
-    <Card >
+    <Card className="d-flex flex-row">
       <CardBody>
           <div>
             <Link to={`details/${jam.id}`}>{jam.jamName}</Link>

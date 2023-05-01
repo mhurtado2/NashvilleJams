@@ -26,7 +26,7 @@ const navigate = useNavigate();
   return (
     <div className="container">
 
-      <div className="row justify-content-center">
+      <div className="d-flex flex-wrap">
         {jams.map((jam) => (
             <React.Fragment key={jam.id}>
           <FilteredJam jam={jam} />
