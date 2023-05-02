@@ -7,5 +7,6 @@ namespace NashvilleJams.Repository
     {
         public List<UserGenre> GetAllUserGenres();
         public UserGenre GetUserGenreById(int id);
+        public void DeleteUserGenre(int userGenreId, Genre genre);
     }
 }

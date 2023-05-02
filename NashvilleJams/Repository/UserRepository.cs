@@ -1,5 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Azure;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using NashvilleJams.Model;
 using NashvilleJams.Utils;
 using System.Collections.Generic;
@@ -21,19 +23,24 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT u.Id, u.FullName, u.Email, u.FireBaseUserId, ug.UserId as UserId,
-                        ug.GenreId as GenreId, g.Name, g.Id as RandomId
+                        ug.GenreId as GenreId, g.Name as GenreName, g.Id as RandomId
                         FROM [User] u
                        LEFT JOIN UserGenre ug on ug.UserId = u.Id
                        LEFT JOIN Genre g on g.Id = ug.GenreId";
-                    var reader = cmd.ExecuteReader();
 
+
+                    var reader = cmd.ExecuteReader();
                     var users = new List<User>();
 
                     while (reader.Read())
                     {
-                        users.Add(new User()
+                        var userId = DbUtils.GetInt(reader, "Id");
+                        var user = users.FirstOrDefault(u => u.Id == userId);
+                        if (user == null)
+                        { 
+                            user = new User
                         {
-                            Id = DbUtils.GetInt(reader, "Id"),
+                            Id = userId,
                             FullName = DbUtils.GetString(reader, "FullName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
@@ -42,12 +49,18 @@ namespace NashvilleJams.Repository
                                 UserId = DbUtils.GetInt(reader, "UserId"),
                                 GenreId = DbUtils.GetInt(reader, "GenreId"),
                             },
-                            Genre = new Genre
+                            Genres = new List<Genre>()
+                        };
+                            users.Add(user);
+                    }
+                        if (!reader.IsDBNull(reader.GetOrdinal("GenreName")))
+                        {
+                            user.Genres.Add(new Genre()
                             {
                                 Id = DbUtils.GetInt(reader, "RandomId"),
-                                Name = DbUtils.GetString(reader, "Name"),
-                            }
-                        });
+                                Name = DbUtils.GetString(reader, "GenreName")
+                            });
+                        }
                     }
 
                     reader.Close();
