@@ -17,7 +17,7 @@ export default function Header({ isLoggedIn, userProfile }) {
 
   return (
     <div className="navBar">
-      <Navbar color="dark" classname="m-2" dark expand="md">
+      <Navbar color="dark" className="m-2" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
           Nashville Jams
         </NavbarBrand>

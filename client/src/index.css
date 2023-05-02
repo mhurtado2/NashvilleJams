@@ -30,7 +30,3 @@ code {
   display: flex;
   flex-direction: row;
 }
-
-.navBar {
-  background: red;
-}

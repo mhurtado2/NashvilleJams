@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 import { getAllUsers } from "../modules/userManager";
 import UserProfileCard from "./UserProfileCard";
