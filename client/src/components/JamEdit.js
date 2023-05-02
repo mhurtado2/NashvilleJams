@@ -65,26 +65,34 @@ const JamEdit = () => {
         <Label for="jamName">Jam Name</Label>
         <textarea type="text" name="jamName" id="jamName" className='form-control text-center'
           value={jam.jamName}
-          onChange={handleInputChange} />     
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+          />     
 
         <Label for="venueName">Venue Name</Label>
         <textarea type="text" name="venueName" id="venueName" className='form-control text-center'
           value={jam.venueName}
-          onChange={handleInputChange} />   
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+          />   
 
         <Label for="address">Address</Label>
         <textarea type="text" name="address" id="address" className='form-control text-center'
           value={jam.address}
-          onChange={handleInputChange} />
+          onChange={handleInputChange}
+          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+           />
 
          <Label for="imageUrl">Image</Label>
         <textarea type="text" name="imageUrl" id="imageUrl" className='form-control text-center'
           value={jam.imageUrl}
-          onChange={handleInputChange} /> 
+          onChange={handleInputChange}
+          style={{width : "80%", margin : "16px 16px 16px 175px" }} 
+          /> 
 
 
 <Label for ="genreId">Genre</Label>
-<select id="genreId" className="form-control text-center" value={jam.genreId} onChange={handleInputChange}>
+<select id="genreId" className="form-control text-center" value={jam.genreId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Genre --</option>
 {genres.map((genre) => (
     <option key={genre.id} value={genre.id}>
@@ -95,7 +103,7 @@ const JamEdit = () => {
 
 
 <Label for ="areaOfTownId">Area Of Town</Label>
-<select id="areaOfTownId" className="form-control text-center" value={jam.areaOfTownId} onChange={handleInputChange}>
+<select id="areaOfTownId" className="form-control text-center" value={jam.areaOfTownId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Area Of Town --</option>
 {areas.map((area) => (
     <option key={area.id} value={area.id}>

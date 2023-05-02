@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Bruno Ace SC', cursive;
   /* background-image: url('https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg?auto=compress&cs=tinysrgb&w=400');
   background-size: cover; */
 

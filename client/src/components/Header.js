@@ -19,7 +19,12 @@ export default function Header({ isLoggedIn, userProfile }) {
     <div className="navBar">
       <Navbar color="dark" className="m-2" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          Nashville Jams
+           <img 
+            src= "https://th.bing.com/th/id/OIP.MefRqJY_zYzMN2iNcj4HzgHaHa?w=212&h=213&c=7&r=0&o=5&pid=1.7"
+            alt = "Nashville Jams"
+            className = "jam-img rounded-circle"
+            style={{width : '80px'}}
+            />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

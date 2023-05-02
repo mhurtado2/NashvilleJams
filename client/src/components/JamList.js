@@ -20,15 +20,12 @@ const JamList = () => {
 
   
   return (
-    <div className="container">
+    <div className="container justify-content-between mb-2 shadow">
 
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap justify-content-between" >
         {jams.map((jam) => (
             <React.Fragment key={jam.id}>
-          <Jam jam={jam} />
-          {/* <Button className="editBtn" onClick={() => navigate(`${jam.id}`)}>Edit</Button> */}
-          {/* <Button className="deleteBtn" onClick={ ()=> deleteJam(`${jam.id}`)}>Delete</Button> */}
-          
+          <Jam jam={jam} />         
           </React.Fragment>
         ))}
       </div>

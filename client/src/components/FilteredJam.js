@@ -7,8 +7,8 @@ import { Card, CardBody } from "reactstrap";
 const FilteredJam = ({ jam }) => {
    
   return (
-    <Card >
-      <CardBody>
+    <Card className="d-flex flex-row justify-content-between mb-2 shadow">
+      <CardBody >
           <div>
             <h2>{jam.jamName}</h2>
             <div>
@@ -16,6 +16,7 @@ const FilteredJam = ({ jam }) => {
             src= {jam.imageUrl} 
             alt = {jam.jamName}
             className = "jam-img"
+            style ={{marginBottom : '10px'}}
             />
             </div>
             <p>Venue Name : {jam.venueName}</p>
