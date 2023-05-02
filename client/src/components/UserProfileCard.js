@@ -29,7 +29,7 @@ const UserProfileCard = ({ user }) => {
             <div>
                 {user.genres && 
                     Array.from(new Set(user.genres.map((genre) => genre.name))).map((name) => (
-                        <div key={name}>{name}</div>
+                        <li key={name}>{name}</li>
                     ))}
            </div>
 

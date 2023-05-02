@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import { me } from "../modules/authManager";
 import { deleteJam, getJamById } from "../modules/jamManager";
 import JamDeets from "./JamDeets";
 
@@ -10,6 +11,7 @@ const JamDetails = () => {
   const [isOpen, setIsOpen] = useState(false);
 const navigate = useNavigate();
 const { id } = useParams();
+const [user, setUser] = useState({});
 
 //make a new function in auth manager
     const getSelectedJam = () => {
@@ -19,6 +21,7 @@ const { id } = useParams();
 
   useEffect(() => {
     getSelectedJam();
+    me().then(setUser);
   }, []);  //only runs on the intial rendering of the page if dependency array is empty 
 
   
@@ -49,12 +52,29 @@ const { id } = useParams();
 };
 
   return (
-    <div className="container text-center">
+    <div className="container justify-content-center text-center">
 
       <div className="row ml-auto justify-content-center">
           <JamDeets jam={jam} />
-          <Button className="btn btn-success m-4" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
-          <Button
+          {
+            jam.userId == user.id ? <> <Button className="btn btn-success m-4" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
+            <Button
+            className="btn btn-danger m-4"
+            onClick={() => {
+                
+                setIsOpen(!isOpen);
+                
+            }}
+        >
+            Delete Jam
+        </Button>
+        <DeleteJamModal />
+        </>
+        : ""
+          }
+
+          {/* <Button className="btn btn-success m-4" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button>  */}
+          {/* <Button
                     className="btn btn-danger m-4"
                     onClick={() => {
                         
@@ -64,7 +84,7 @@ const { id } = useParams();
                 >
                     Delete Jam
                 </Button>
-                <DeleteJamModal />
+                <DeleteJamModal /> */}
       </div>
     </div>
   );

@@ -75,24 +75,9 @@ const JamForm = ({ getJam }) => {
           value={jam.imageUrl}
           onChange={handleInputChange} /> 
 
-{/* {genres.map((genre) => {
-          return (
-            <FormGroup key={genre.id} radio>
-              <Input
-                type="radio"
-                id={genre.id}
-                name={genre.name}
-                value={genre.id}
-                checked={jam.genreId === genre.id}
-                onChange={handleInputChange}
-              />
-              <Label>{genre.name}</Label>
-            </FormGroup>
-          );
-        })} */}
 
 <Label for ="genreId">Genre</Label>
-<select id="genreId" className="form-control" value={jam.genreId} onChange={handleInputChange}>
+<select id="genreId" className="form-control text-center" value={jam.genreId} onChange={handleInputChange}>
 <option value="">-- Select Genre --</option>
 {genres.map((genre) => (
     <option key={genre.id} value={genre.id}>
@@ -102,24 +87,8 @@ const JamForm = ({ getJam }) => {
 </select>
 
 
-{/* {areas.map((area) => {
-          return (
-            <FormGroup key={area.id} checked>
-              <Input
-                type="checkbox"
-                id={area.id}
-                name={area.name}
-                value={area.id}
-                checked={jam.areaOfTownId === area.id}
-                onChange={handleInputChange}
-              />
-              <Label>{area.name}</Label>
-            </FormGroup>
-          );
-        })}   */}
-
 <Label for ="areaOfTownId">Area Of Town</Label>
-<select id="areaOfTownId" className="form-control" value={jam.areaOfTownId} onChange={handleInputChange}>
+<select id="areaOfTownId" className="form-control text-center" value={jam.areaOfTownId} onChange={handleInputChange}>
 <option value="">-- Select Area Of Town --</option>
 {areas.map((area) => (
     <option key={area.id} value={area.id}>
@@ -130,8 +99,8 @@ const JamForm = ({ getJam }) => {
 
         </>
       </FormGroup>
-      <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
-      <Button className="btn btn-primary" onClick={() => navigate("/")}>Cancel</Button>
+      <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
+      <Button className="btn btn-secondary m-4" onClick={() => navigate("/")}>Cancel</Button>
     </Form>
   );
 };

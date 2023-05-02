@@ -15,9 +15,9 @@ const UserProfiles = () => {
 
 
   return (
-    <div className="container">
+    <div className="container justify-content-between justify-content-center">
 
-    <div className="d-flex flex-wrap justify-content-between "></div>
+    <div className="d-flex flex-wrap"></div>
       {userProfiles.map((user) => (
         <UserProfileCard key={user.id} user={user}  />
       ))}

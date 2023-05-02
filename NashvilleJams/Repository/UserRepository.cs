@@ -25,8 +25,8 @@ namespace NashvilleJams.Repository
                     cmd.CommandText = @"SELECT u.Id, u.FullName, u.Email, u.FireBaseUserId, ug.UserId as UserId,
                         ug.GenreId as GenreId, g.Name as GenreName, g.Id as RandomId
                         FROM [User] u
-                       LEFT JOIN UserGenre ug on ug.UserId = u.Id
-                       LEFT JOIN Genre g on g.Id = ug.GenreId";
+                       INNER JOIN UserGenre ug on ug.UserId = u.Id
+                       INNER JOIN Genre g on g.Id = ug.GenreId";
 
 
                     var reader = cmd.ExecuteReader();
