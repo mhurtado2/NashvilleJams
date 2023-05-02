@@ -26,6 +26,7 @@ namespace NashvilleJams.Controllers
             return Ok(_userRepository.GetAllUsers());
         }
 
+        //hi
 
         //[HttpGet("{id}")]
         //public IActionResult Get(int id)
