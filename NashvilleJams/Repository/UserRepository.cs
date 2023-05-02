@@ -159,7 +159,7 @@ namespace NashvilleJams.Repository
                                         OUTPUT INSERTED.ID
                                         VALUES (@FireBaseUserId, @FullName, @Email)";
                     DbUtils.AddParameter(cmd, "@FireBaseUserId", userProfile.FireBaseUserId);
-                    DbUtils.AddParameter(cmd, "@Name", userProfile.FullName);
+                    DbUtils.AddParameter(cmd, "@FullName", userProfile.FullName);
                     DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
