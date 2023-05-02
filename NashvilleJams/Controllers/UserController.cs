@@ -74,13 +74,13 @@ namespace NashvilleJams.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(User userProfile)
+        public IActionResult Register(User user)
         {
-            // All newly registered users start out as a "user" user type (i.e. they are not admins)
+            // All newly registered users start out as a "user" user type e. they are not admins)
            
-            _userRepository.Add(userProfile);
+            _userRepository.Add(user);
             return CreatedAtAction(
-                nameof(GetByFirebaseUserId), new { firebaseUserId = userProfile.FireBaseUserId }, userProfile);
+                nameof(GetByFirebaseUserId), new { firebaseUserId = user.FireBaseUserId }, user);
         }
 
         private User GetCurrentUserProfile()
@@ -88,6 +88,14 @@ namespace NashvilleJams.Controllers
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _userRepository.DeleteUser(id);
+            return NoContent();
+        }
+
 
     }
 }

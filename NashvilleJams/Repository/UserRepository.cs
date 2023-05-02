@@ -148,7 +148,7 @@ namespace NashvilleJams.Repository
             }
         }
 
-        public void Add(User userProfile)
+        public void Add(User user)
         {
             using (var conn = Connection)
             {
@@ -158,13 +158,31 @@ namespace NashvilleJams.Repository
                     cmd.CommandText = @"INSERT INTO [User] (FireBaseUserId, FullName, Email)
                                         OUTPUT INSERTED.ID
                                         VALUES (@FireBaseUserId, @FullName, @Email)";
-                    DbUtils.AddParameter(cmd, "@FireBaseUserId", userProfile.FireBaseUserId);
-                    DbUtils.AddParameter(cmd, "@FullName", userProfile.FullName);
-                    DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
-                    userProfile.Id = (int)cmd.ExecuteScalar();
+                    DbUtils.AddParameter(cmd, "@FireBaseUserId", user.FireBaseUserId);
+                    DbUtils.AddParameter(cmd, "@FullName", user.FullName);
+                    DbUtils.AddParameter(cmd, "@Email", user.Email);
+                    user.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }
+
+        public void DeleteUser(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"DELETE FROM [User] WHERE Id = @id;";
+
+
+                    DbUtils.AddParameter(cmd, "@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
     }
 }

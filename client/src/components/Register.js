@@ -6,7 +6,8 @@ import { register } from "../modules/authManager";
 export default function Register() {
   const navigate = useNavigate();
 
-  const [name, setName] = useState();
+  //change name to fullName
+  const [fullName, setfullName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
@@ -16,7 +17,7 @@ export default function Register() {
     if (password && password !== confirmPassword) {
       alert("Passwords don't match. Do better.");
     } else {
-      const userProfile = { name, email };
+      const userProfile = { fullName, email };
       register(userProfile, password).then(() => navigate("/"));
     }
   };
@@ -25,12 +26,12 @@ export default function Register() {
     <Form onSubmit={registerClick}>
       <fieldset>
         <FormGroup>
-          <Label htmlFor="name">Name</Label>
+          <Label htmlFor="fullName">Name</Label>
           <Input
-            id="name"
+            id="fullName"
             type="text"
             autoFocus
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setfullName(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
