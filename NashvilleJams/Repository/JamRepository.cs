@@ -221,6 +221,68 @@ namespace NashvilleJams.Repository
             }
         }
 
+        public List<Jam> Search(string criterion, bool sortDescending)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    var sql = @"
+            SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId, g.id AS GenreId, 
+                              g.Name AS GenreName, a.Id AS AreaId, a.Name AS AreaName
+                              FROM Jam j
+                              LEFT JOIN Genre g on g.Id = j.GenreId
+                              LEFT JOIN AreaOfTown a on a.Id = j.AreaOfTownId
+               WHERE j.JamNAME LIKE @Criterion OR g.Name LIKE @Criterion OR a.Name LIKE @Criterion";
+
+                    if (sortDescending)
+                    {
+                        sql += " ORDER BY j.JamName DESC";
+                    }
+                    else
+                    {
+                        sql += " ORDER BY j.JamName";
+                    }
+
+                    cmd.CommandText = sql;
+                    DbUtils.AddParameter(cmd, "@Criterion", $"%{criterion}%");
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        var jams = new List<Jam>();
+                        while (reader.Read())
+                        {
+                            jams.Add(new Jam()
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                JamName = DbUtils.GetString(reader, "JamName"),
+                                VenueName = DbUtils.GetString(reader, "VenueName"),
+                                ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
+                                Address = DbUtils.GetString(reader, "Address"),
+                                GenreId = DbUtils.GetInt(reader, "GenreId"),
+                                UserId = DbUtils.GetInt(reader, "UserId"),
+                                AreaOfTownId = DbUtils.GetInt(reader, "AreaOfTownId"),
+                                Genre = new Genre
+                                {
+                                    Id = DbUtils.GetInt(reader, "GenreId"),
+                                    Name = DbUtils.GetString(reader, "GenreName"),
+                                },
+                                AreaOfTown = new AreaOfTown
+                                {
+                                    Id = DbUtils.GetInt(reader, "AreaId"),
+                                    Name = DbUtils.GetString(reader, "AreaName"),
+                                },
+                            
+                            });
+                        }
+
+                        return jams;
+                    }
+                }
+            }
+        }
+
 
 
     }

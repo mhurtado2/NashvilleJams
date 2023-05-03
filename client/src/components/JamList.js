@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
 import { deleteJam, getAllJams, getJamCount } from "../modules/jamManager";
 import Jam from "./Jam";
+import JamSearch from "./JamSearch";
+
 
 
 const JamList = () => {
@@ -26,9 +28,16 @@ const JamList = () => {
 
   
   return (
-    <div className="container justify-content-between mb-2 ">
-        <p className="mr-auto text-muted" style={{border : "black", width: "300px"}}>Current Jam Count: {jamCount.count}</p>
+    <>
+    <div>
+        <div className="text-center">
+        <h2>Find A Jam!</h2>
+        <JamSearch />
+        <p className="text-center text-muted">Current Jam Count: {jamCount.count}</p>
+        </div>
+    </div>
 
+    <div className="container justify-content-between mb-2 ">
       <div className="d-flex flex-wrap justify-content-between shadow" >
         {jams.map((jam) => (
             <React.Fragment key={jam.id}>
@@ -37,6 +46,7 @@ const JamList = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
