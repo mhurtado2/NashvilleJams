@@ -54,7 +54,7 @@ const JamForm = ({ getJam }) => {
   return (
 <Form >
       <FormGroup > 
-        <React.Fragment style={{backgroundColor : "black"}}>
+        <React.Fragment >
         <Label for="jamName">Jam Name</Label>
         <textarea type="text" name="jamName" id="jamName" className='form-control'
           value={jam.jamName}    
