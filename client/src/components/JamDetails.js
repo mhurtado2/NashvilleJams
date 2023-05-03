@@ -7,8 +7,8 @@ import JamDeets from "./JamDeets";
 
 
 const JamDetails = () => {
-  const [jam, setJam] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+const [jam, setJam] = useState([]);
+const [isOpen, setIsOpen] = useState(false);
 const navigate = useNavigate();
 const { id } = useParams();
 const [user, setUser] = useState({});
@@ -72,19 +72,7 @@ const [user, setUser] = useState({});
         </>
         : ""
           }
-
-          {/* <Button className="btn btn-success m-4" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button>  */}
-          {/* <Button
-                    className="btn btn-danger m-4"
-                    onClick={() => {
-                        
-                        setIsOpen(!isOpen);
-                        
-                    }}
-                >
-                    Delete Jam
-                </Button>
-                <DeleteJamModal /> */}
+          
       </div>
     </div>
   );

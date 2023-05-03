@@ -16,7 +16,7 @@ const FilteredJam = ({ jam }) => {
             src= {jam.imageUrl} 
             alt = {jam.jamName}
             className = "jam-img"
-            style ={{marginBottom : '10px'}}
+            style={{width : '300px', height : "200px", margin : '20px'}}
             />
             </div>
             <p>Venue Name : {jam.venueName}</p>

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
 import { getAllAreas } from '../modules/areaManager';
+import { me } from '../modules/authManager';
 import { getAllGenres } from '../modules/genreManager';
 import { addJam } from '../modules/jamManager';
-// import { getUserGenres } from '../modules/userGenreManager';
+import { addUserGenre, getUserGenres } from '../modules/userGenreManager';
 
 
 
@@ -37,7 +38,6 @@ const JamForm = ({ getJam }) => {
 
     const jamCopy = { ...jam };
 
-
     jamCopy[key] = value;
 
     setJam(jamCopy);
@@ -51,6 +51,7 @@ const JamForm = ({ getJam }) => {
         navigate("/");
     });
   };
+
 
   return (
 <Form >

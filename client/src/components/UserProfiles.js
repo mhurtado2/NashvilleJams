@@ -19,7 +19,7 @@ const UserProfiles = () => {
 
     <div className="d-flex flex-wrap shadow mr-2"></div>
       {userProfiles.map((user) => (
-        <UserProfileCard key={user.id} user={user} style={{margin: '10px 10px 10px 10px'}} />
+        <UserProfileCard key={user.id} user={user} style={{marginRight : '10px'}} />
       ))}
     </div>
   );

@@ -14,7 +14,7 @@ namespace NashvilleJams.Repository
 
         public UserRepository(IConfiguration config) : base(config) { }
 
-        //getallusers is messed up
+        
         public List<User> GetAllUsers()
         {
             using (var conn = Connection)

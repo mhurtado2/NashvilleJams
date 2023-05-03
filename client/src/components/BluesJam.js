@@ -4,12 +4,8 @@ import { Button } from "reactstrap";
 import { deleteJam, getAllJams } from "../modules/jamManager";
 import FilteredJam from "./FilteredJam";
 
-
-
-
 const BluesJam = () => {
   const [jams, setJams] = useState([]);
-const navigate = useNavigate();
 
 //make a new function in auth manager
     const getJams = () => {
