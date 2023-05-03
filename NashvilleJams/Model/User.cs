@@ -10,5 +10,8 @@ namespace NashvilleJams.Model
         public string FullName { get; set; }
         public string Email { get; set; }
         public string FireBaseUserId { get; set; }
+        public UserGenre UserGenre { get; set; }
+        public List<Genre> Genres { get; set; }
+        public Genre Genre { get; set; }
     }
 }

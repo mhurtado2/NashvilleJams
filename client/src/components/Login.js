@@ -26,6 +26,7 @@ export default function Login() {
             type="text"
             autoFocus
             onChange={(e) => setEmail(e.target.value)}
+            style={{width : "80%", margin : "16px 16px 16px 175px" }}
           />
         </FormGroup>
         <FormGroup>
@@ -34,6 +35,7 @@ export default function Login() {
             id="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
+            style={{width : "80%", margin : "16px 16px 16px 175px" }}
           />
         </FormGroup>
         <FormGroup>

@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NashvilleJams.Model;
 using NashvilleJams.Repository;
 
 namespace NashvilleJams.Controllers
@@ -9,10 +11,12 @@ namespace NashvilleJams.Controllers
     public class UserGenreController : ControllerBase
     {
         private readonly IUserGenreRepository _userGenreRepository;
+        private readonly IGenreRepository _genreRepository;
 
-        public UserGenreController(IUserGenreRepository userGenreRepository)
+        public UserGenreController(IUserGenreRepository userGenreRepository, IGenreRepository genreRepository)
         {
             _userGenreRepository = userGenreRepository;
+            _genreRepository = genreRepository;
         }
 
 
@@ -34,6 +38,24 @@ namespace NashvilleJams.Controllers
             return Ok(userGenre);
         }
 
+        [HttpPost("addUserGenre")]
+        public IActionResult AddUserGenre(UserGenre userGenre)
+        {
+
+            _userGenreRepository.AddUserGenre(userGenre);
+            return CreatedAtAction(nameof(Get), new { id = userGenre.Id }, userGenre);
+
+        }
+
+
+        [HttpDelete("deleteUserGenre{id}")]
+        public IActionResult DeleteUserGenre(int userGenreId, Genre genre)
+        {
+
+            _userGenreRepository.DeleteUserGenre(userGenreId, genre);
+            return Ok();
+
+        }
 
     }
 }

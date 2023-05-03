@@ -4,13 +4,13 @@ import { Card, CardBody } from "reactstrap";
 
 
 
-const Jam = ({ jam }) => {
+const FilteredJam = ({ jam }) => {
    
   return (
-    <Card className="d-flex flex-row mb-2">
-      <CardBody>
+    <Card className="d-flex flex-row justify-content-between mb-2 shadow">
+      <CardBody >
           <div>
-            <Link to={`details/${jam.id}`}>{jam.jamName}</Link>
+            <h2>{jam.jamName}</h2>
             <div>
             <img 
             src= {jam.imageUrl} 
@@ -19,11 +19,14 @@ const Jam = ({ jam }) => {
             style={{width : '300px', height : "200px", margin : '20px'}}
             />
             </div>
-            <div style={{backgroundColor : "gold", borderRadius : '20px'}}>Area Of Town: {jam.areaOfTown?.name}</div>
+            <p>Venue Name : {jam.venueName}</p>
+            <p>Area Of Town : {jam.areaOfTown?.name}</p>
+            <p>Address : {jam.address}</p>
+            
           </div>
       </CardBody>
     </Card>
   );
 };
 
-export default Jam;
+export default FilteredJam;

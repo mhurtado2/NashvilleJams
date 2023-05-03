@@ -83,5 +83,11 @@ namespace NashvilleJams.Controllers
             return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
 
+        [HttpGet("search")]
+        public IActionResult Search(string q, bool sortDesc)
+        {
+            return Ok(_jamRepository.Search(q, sortDesc));
+        }
+
     }
 }

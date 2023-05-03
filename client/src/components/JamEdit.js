@@ -63,45 +63,36 @@ const JamEdit = () => {
     <Form>
       <FormGroup>
         <Label for="jamName">Jam Name</Label>
-        <textarea type="text" name="jamName" id="jamName" className='form-control'
+        <textarea type="text" name="jamName" id="jamName" className='form-control text-center'
           value={jam.jamName}
-          onChange={handleInputChange} />     
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+          />     
 
         <Label for="venueName">Venue Name</Label>
-        <textarea type="text" name="venueName" id="venueName" className='form-control'
+        <textarea type="text" name="venueName" id="venueName" className='form-control text-center'
           value={jam.venueName}
-          onChange={handleInputChange} />   
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+          />   
 
         <Label for="address">Address</Label>
-        <textarea type="text" name="address" id="address" className='form-control'
+        <textarea type="text" name="address" id="address" className='form-control text-center'
           value={jam.address}
-          onChange={handleInputChange} />
+          onChange={handleInputChange}
+          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+           />
 
          <Label for="imageUrl">Image</Label>
-        <textarea type="text" name="imageUrl" id="imageUrl" className='form-control'
+        <textarea type="text" name="imageUrl" id="imageUrl" className='form-control text-center'
           value={jam.imageUrl}
-          onChange={handleInputChange} /> 
+          onChange={handleInputChange}
+          style={{width : "80%", margin : "16px 16px 16px 175px" }} 
+          /> 
 
-{/* <div>Genre</div>
-
-{genres.map((genre) => {
-          return (
-            <FormGroup key={genre.id} defaultChecked>
-              <Input
-                type="checkbox"
-                id={genre.id}
-                name={genre.name}
-                value={genre.id}
-                checked={jam.genreId === genre.id}
-                onChange={handleInputChange}
-              />
-              <Label>{genre.name}</Label>
-            </FormGroup>
-          );
-        })} */}
 
 <Label for ="genreId">Genre</Label>
-<select id="genreId" className="form-control" value={jam.genreId} onChange={handleInputChange}>
+<select id="genreId" className="form-control text-center" value={jam.genreId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Genre --</option>
 {genres.map((genre) => (
     <option key={genre.id} value={genre.id}>
@@ -111,27 +102,8 @@ const JamEdit = () => {
 </select>
 
 
-{/* 
-<div>Area</div>
-
-{areas.map((area) => {
-          return (
-            <FormGroup key={area.id} defaultChecked>
-              <Input
-                type="checkbox"
-                id={area.id}
-                name={area.name}
-                value={area.id}
-                checked={jam.areaOfTownId === area.id}
-                onChange={handleInputChange}
-              />
-              <Label>{area.name}</Label>
-            </FormGroup>
-          );
-        })} */}
-
 <Label for ="areaOfTownId">Area Of Town</Label>
-<select id="areaOfTownId" className="form-control" value={jam.areaOfTownId} onChange={handleInputChange}>
+<select id="areaOfTownId" className="form-control text-center" value={jam.areaOfTownId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Area Of Town --</option>
 {areas.map((area) => (
     <option key={area.id} value={area.id}>
@@ -142,8 +114,8 @@ const JamEdit = () => {
 
         
       </FormGroup>
-      <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
-      <Button className="btn btn-primary" onClick={() => navigate("/")}>Cancel</Button>
+      <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
+      <Button className="btn btn-secondary m-4" onClick={() => navigate("/")}>Cancel</Button>
     </Form>
   );
 };

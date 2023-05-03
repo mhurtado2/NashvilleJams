@@ -1,39 +1,53 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "reactstrap";
-import { deleteJam, getAllJams } from "../modules/jamManager";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
+import { deleteJam, getAllJams, getJamCount } from "../modules/jamManager";
 import Jam from "./Jam";
+import JamSearch from "./JamSearch";
+
 
 
 const JamList = () => {
   const [jams, setJams] = useState([]);
-const navigate = useNavigate();
+  const [jamCount, setJamCount] = useState({count : 0});
 
 //make a new function in auth manager
     const getJams = () => {
     getAllJams().then(jams => setJams(jams));
   };
 
+  const getJamsInNash = () => {
+    getJamCount().then(count => setJamCount({count}))
+  }
+
 
   useEffect(() => {
     getJams();
+    getJamsInNash();
   }, []);  //only runs on the intial rendering of the page if dependency array is empty 
 
-
+  //react component 
+  
   return (
-    <div className="container">
+    <>
+    <div>
+        <div className="text-center">
+        <h2>Find A Jam!</h2>
+        <JamSearch />
+        <p className="text-center text-muted">Current Jam Count: {jamCount.count}</p>
+        </div>
+    </div>
 
-      <div className="row justify-content-center">
+    <div className="container justify-content-between mb-2 ">
+      <div className="d-flex flex-wrap justify-content-between shadow" >
         {jams.map((jam) => (
             <React.Fragment key={jam.id}>
-          <Jam jam={jam} />
-          <Button className="editBtn" onClick={() => navigate(`${jam.id}`)}>Edit</Button>
-          <Button className="deleteBtn" onClick={ ()=> deleteJam(`${jam.id}`)}>Delete</Button>
+          <Jam jam={jam} />         
           </React.Fragment>
         ))}
       </div>
-      {/* <Button onClick={() => navigate("add")}> Create a New Tag!</Button> */}
     </div>
+    </>
   );
 };
 

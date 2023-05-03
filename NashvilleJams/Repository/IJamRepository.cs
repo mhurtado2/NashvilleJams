@@ -13,5 +13,6 @@ namespace NashvilleJams.Repository
         public int GetJamCount();
         public void UpdateJam(Jam jam);
         public void DeleteJam(int id);
+        public List<Jam> Search(string criterion, bool sortDescending);
     }
 }

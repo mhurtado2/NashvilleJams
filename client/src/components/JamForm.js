@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
 import { getAllAreas } from '../modules/areaManager';
+import { me } from '../modules/authManager';
 import { getAllGenres } from '../modules/genreManager';
 import { addJam } from '../modules/jamManager';
+import { addUserGenre, getUserGenres } from '../modules/userGenreManager';
 
 
 
@@ -36,7 +38,6 @@ const JamForm = ({ getJam }) => {
 
     const jamCopy = { ...jam };
 
-
     jamCopy[key] = value;
 
     setJam(jamCopy);
@@ -51,48 +52,42 @@ const JamForm = ({ getJam }) => {
     });
   };
 
+
   return (
-<Form>
-      <FormGroup>
-        <>
+<Form >
+      <FormGroup > 
+        <React.Fragment >
         <Label for="jamName">Jam Name</Label>
         <textarea type="text" name="jamName" id="jamName" className='form-control'
-          value={jam.jamName}
-          onChange={handleInputChange} />     
+          value={jam.jamName}    
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+          />     
 
         <Label for="venueName">Venue Name</Label>
         <textarea type="text" name="venueName" id="venueName" className='form-control'
           value={jam.venueName}
-          onChange={handleInputChange} />   
+          onChange={handleInputChange}
+          style={{width : "80%", margin : "16px 16px 16px 175px"}} 
+          />   
 
         <Label for="address">Address</Label>
         <textarea type="text" name="address" id="address" className='form-control'
           value={jam.address}
-          onChange={handleInputChange} />
+          onChange={handleInputChange}
+          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+           />
 
          <Label for="imageUrl">Image</Label>
         <textarea type="text" name="imageUrl" id="imageUrl" className='form-control'
           value={jam.imageUrl}
-          onChange={handleInputChange} /> 
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+          /> 
 
-{/* {genres.map((genre) => {
-          return (
-            <FormGroup key={genre.id} radio>
-              <Input
-                type="radio"
-                id={genre.id}
-                name={genre.name}
-                value={genre.id}
-                checked={jam.genreId === genre.id}
-                onChange={handleInputChange}
-              />
-              <Label>{genre.name}</Label>
-            </FormGroup>
-          );
-        })} */}
 
 <Label for ="genreId">Genre</Label>
-<select id="genreId" className="form-control" value={jam.genreId} onChange={handleInputChange}>
+<select id="genreId" className="form-control text-center form-control-sm" value={jam.genreId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Genre --</option>
 {genres.map((genre) => (
     <option key={genre.id} value={genre.id}>
@@ -102,24 +97,8 @@ const JamForm = ({ getJam }) => {
 </select>
 
 
-{/* {areas.map((area) => {
-          return (
-            <FormGroup key={area.id} checked>
-              <Input
-                type="checkbox"
-                id={area.id}
-                name={area.name}
-                value={area.id}
-                checked={jam.areaOfTownId === area.id}
-                onChange={handleInputChange}
-              />
-              <Label>{area.name}</Label>
-            </FormGroup>
-          );
-        })}   */}
-
 <Label for ="areaOfTownId">Area Of Town</Label>
-<select id="areaOfTownId" className="form-control" value={jam.areaOfTownId} onChange={handleInputChange}>
+<select id="areaOfTownId" className="form-control form-control-sm text-center" value={jam.areaOfTownId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Area Of Town --</option>
 {areas.map((area) => (
     <option key={area.id} value={area.id}>
@@ -128,10 +107,10 @@ const JamForm = ({ getJam }) => {
 ))}
 </select>
 
-        </>
+        </React.Fragment>
       </FormGroup>
-      <Button className="btn btn-primary" onClick={handleSave}>Save</Button>
-      <Button className="btn btn-primary" onClick={() => navigate("/")}>Cancel</Button>
+      <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
+      <Button className="btn btn-secondary m-4" onClick={() => navigate("/")}>Cancel</Button>
     </Form>
   );
 };

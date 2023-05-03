@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
+import { Navigate, NavLink as RRNavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -17,18 +17,48 @@ export default function Header({ isLoggedIn, userProfile }) {
 
   return (
     <div className="navBar">
-      <Navbar color="dark" dark expand="md">
+      <Navbar color="dark" className="m-2" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          Nashville Jams
+           <img 
+            src= "https://th.bing.com/th/id/OIP.MefRqJY_zYzMN2iNcj4HzgHaHa?w=212&h=213&c=7&r=0&o=5&pid=1.7"
+            alt = "Nashville Jams"
+            className = "jam-img rounded-circle"
+            style={{width : '80px'}}
+            />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="m1-auto" navbar style={{ justifyContent: 'space-between', width: '100%'}}>
             {isLoggedIn && (
               <>
                 <NavItem>
+                  <NavLink tag={RRNavLink} to="/blues">
+                    Blues Jams
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/country">
+                    Country Jams
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/randb">
+                    R&B Jams
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/jazz">
+                    Jazz Jams
+                  </NavLink>
+                </NavItem>
+                <NavItem>
                   <NavLink tag={RRNavLink} to="/add">
                     Add Jam
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink tag={RRNavLink} to="/users">
+                    User Profiles
                   </NavLink>
                 </NavItem>
                 <NavItem>

@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
 .App {
   text-align: center;
+  font-family: 'Bruno Ace SC', cursive;
+  /* background-image: url('https://plus.unsplash.com/premium_photo-1670176447319-c5622f2fb996?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+  background-size: cover; */
 }
 
 .App-logo {
@@ -17,7 +22,7 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -36,4 +41,7 @@
     transform: rotate(360deg);
   }
 }
+
+
+
 

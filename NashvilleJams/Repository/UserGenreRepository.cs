@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Azure;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using NashvilleJams.Model;
 using NashvilleJams.Utils;
@@ -18,8 +19,9 @@ namespace NashvilleJams.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, UserId, GenreId
-                       FROM UserGenre";
+                    cmd.CommandText = @"SELECT ug.Id, ug.UserId, ug.GenreId, g.[Name]
+                            FROM UserGenre ug
+                            LEFT JOIN Genre g on g.Id = ug.GenreId";
                     var reader = cmd.ExecuteReader();
 
                     var userGenres = new List<UserGenre>();
@@ -30,7 +32,12 @@ namespace NashvilleJams.Repository
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             UserId = DbUtils.GetInt(reader, "UserId"),
-                            GenreId = DbUtils.GetInt(reader, "GenreId")
+                            GenreId = DbUtils.GetInt(reader, "GenreId"),
+                            Genre = new Genre
+                            {
+                                Id = DbUtils.GetInt(reader, "GenreId"),
+                                Name = DbUtils.GetString(reader, "Name"),
+                            },
                         });
                     }
 
@@ -85,5 +92,55 @@ namespace NashvilleJams.Repository
 
             }
         }
+
+
+        public void AddUserGenre(UserGenre userGenre)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                INSERT INTO UserGenre (UserId, GenreId)
+                OUTPUT INSERTED.ID
+                VALUES (@UserId, @GenreId);
+            ";
+                    cmd.Parameters.AddWithValue("@UserId", userGenre.UserId);
+                    cmd.Parameters.AddWithValue("@GenreId", userGenre.GenreId);
+
+                    int newlyCreatedId = (int)cmd.ExecuteScalar();
+
+                    userGenre.Id = newlyCreatedId;
+
+                }
+            }
+        }
+
+        public void DeleteUserGenre(int userGenreId, Genre genre)
+        {
+
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                   DELETE FROM UserGenre
+                           WHERE Id = @id AND GenreId = @genreId
+                         ";
+
+                    cmd.Parameters.AddWithValue("@id", userGenreId);
+                    cmd.Parameters.AddWithValue("@genreId", genre.Id);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
+
+        }
+
+
+
     }
 }
