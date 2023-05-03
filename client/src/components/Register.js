@@ -32,6 +32,7 @@ export default function Register() {
             type="text"
             autoFocus
             onChange={(e) => setfullName(e.target.value)}
+            style={{width : "80%", margin : "16px 16px 16px 175px" }}
           />
         </FormGroup>
         <FormGroup>
@@ -40,6 +41,7 @@ export default function Register() {
             id="email"
             type="text"
             onChange={(e) => setEmail(e.target.value)}
+            style={{width : "80%", margin : "16px 16px 16px 175px" }}
           />
         </FormGroup>
         <FormGroup>
@@ -48,6 +50,7 @@ export default function Register() {
             id="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
+            style={{width : "80%", margin : "16px 16px 16px 175px" }}
           />
         </FormGroup>
         <FormGroup>
@@ -56,6 +59,7 @@ export default function Register() {
             id="confirmPassword"
             type="password"
             onChange={(e) => setConfirmPassword(e.target.value)}
+            style={{width : "80%", margin : "16px 16px 16px 175px" }}
           />
         </FormGroup>
         <FormGroup>
