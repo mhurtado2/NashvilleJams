@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink as RRNavLink } from "react-router-dom";
+import { Navigate, NavLink as RRNavLink } from "react-router-dom";
 import {
   Collapse,
   Navbar,

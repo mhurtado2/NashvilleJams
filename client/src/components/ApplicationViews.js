@@ -20,19 +20,19 @@ export default function ApplicationViews({ isLoggedIn }) {
       <Route path="/">
         <Route
           index
-          element={isLoggedIn ? <JamList/>: <Navigate to="/login" />}
+          element={isLoggedIn ? <JamList/> : <Navigate to="/login" />}
         />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="blues" element={<BluesJam />} />
-        <Route path="country" element={<CountryJam />} />
-        <Route path="randb" element={<RandBJam />} />
-        <Route path="jazz" element={<JazzJam />} />
-        <Route path="add" element={<JamForm />} />
-        <Route path="users" element={<UserProfiles />} />
+        <Route path="blues" element={isLoggedIn ? <BluesJam /> : <Navigate to="/login" />} />
+        <Route path="country" element={isLoggedIn ? <CountryJam /> : <Navigate to="/login" />} />
+        <Route path="randb" element={isLoggedIn ? <RandBJam /> : <Navigate to="/login" />} />
+        <Route path="jazz" element={isLoggedIn ? <JazzJam /> : <Navigate to="/login" /> } />
+        <Route path="add" element={isLoggedIn ? <JamForm /> : <Navigate to="/login" />} />
+        <Route path="users" element={isLoggedIn ? <UserProfiles /> : <Navigate to="/login" />} />
         <Route path="details/:id">
-            <Route index element={<JamDetails />} />
-            <Route path="edit/:id" element={< JamEdit />} />
+            <Route index element={isLoggedIn ? <JamDetails /> : <Navigate to="/login" />} />
+            <Route path="edit/:id" element={isLoggedIn ? < JamEdit /> : <Navigate to="/login" />} />
           </Route>
         <Route path="*" element={<p>Whoops, nothing here...</p>} />
       </Route>
