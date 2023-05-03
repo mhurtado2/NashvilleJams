@@ -6,7 +6,7 @@ import { getAllGenres } from '../modules/genreManager';
 import { addJam } from '../modules/jamManager';
 // import { getUserGenres } from '../modules/userGenreManager';
 
-
+//yo
 
 const JamForm = ({ getJam }) => {
   const emptyJam = {
