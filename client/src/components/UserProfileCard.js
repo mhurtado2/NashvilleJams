@@ -15,8 +15,8 @@ import "bootstrap/dist/css/bootstrap.css";
 const UserProfileCard = ({ user }) => {
 
   return (
-    <Card className="mt-1 shadow">
-      <CardBody key={user.id} className="border">
+    <Card className="mr-2 shadow justify-content-between">
+      <CardBody key={user.id} className="border mr-2">
         <>
             <h2>
                 {user.fullName}
@@ -26,7 +26,7 @@ const UserProfileCard = ({ user }) => {
             src= "https://th.bing.com/th/id/OIP.MefRqJY_zYzMN2iNcj4HzgHaHa?w=212&h=213&c=7&r=0&o=5&pid=1.7"
             alt = "Avatar"
             className = "jam-img rounded-circle"
-            style={{width : '80px'}}
+            style={{width : '80px', margin : "10px 10px 10px 10px"}}
             />
 
 

@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
 import { getAllAreas } from '../modules/areaManager';
 import { getAllGenres } from '../modules/genreManager';
 import { addJam } from '../modules/jamManager';
+// import { getUserGenres } from '../modules/userGenreManager';
 
 
 

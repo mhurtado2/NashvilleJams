@@ -15,11 +15,11 @@ const UserProfiles = () => {
 
 
   return (
-    <div className="container justify-content-between justify-content-center">
+    <div className="container justify-content-between justify-content-center mr-2">
 
-    <div className="d-flex flex-wrap"></div>
+    <div className="d-flex flex-wrap shadow mr-2"></div>
       {userProfiles.map((user) => (
-        <UserProfileCard key={user.id} user={user}  />
+        <UserProfileCard key={user.id} user={user} style={{margin: '10px 10px 10px 10px'}} />
       ))}
     </div>
   );

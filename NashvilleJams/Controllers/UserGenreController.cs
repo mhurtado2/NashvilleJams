@@ -38,6 +38,15 @@ namespace NashvilleJams.Controllers
             return Ok(userGenre);
         }
 
+        [HttpPost("addUserGenre")]
+        public IActionResult AddUserGenre(UserGenre userGenre)
+        {
+
+            _userGenreRepository.AddUserGenre(userGenre);
+            return CreatedAtAction(nameof(Get), new { id = userGenre.Id }, userGenre);
+
+        }
+
 
         [HttpDelete("deleteUserGenre{id}")]
         public IActionResult DeleteUserGenre(int userGenreId, Genre genre)
