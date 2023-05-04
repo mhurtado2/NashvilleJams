@@ -32,7 +32,7 @@ const JamList = () => {
     <>
     <div>
         <div className="text-center">
-        <h2>Find A Jam!</h2>
+        <h2>Find A Jam</h2>
         <JamSearch />
         <p className="text-center text-muted">Current Jam Count: {jamCount.count}</p>
         </div>

@@ -86,7 +86,7 @@ const JamForm = ({ getJam }) => {
           /> 
 
 
-<Label for ="genreId">Genre</Label>
+<Label for ="genreId">Genre</Label> <Button className="btn btn-info m-4" onClick={() => navigate("/addGenre")}>Add Genre</Button>
 <select id="genreId" className="form-control text-center form-control-sm" value={jam.genreId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Genre --</option>
 {genres.map((genre) => (
@@ -97,7 +97,7 @@ const JamForm = ({ getJam }) => {
 </select>
 
 
-<Label for ="areaOfTownId">Area Of Town</Label>
+<Label for ="areaOfTownId">Area Of Town</Label> <Button className="btn btn-info m-4" onClick={() => navigate("/addArea")}>Add Area</Button>
 <select id="areaOfTownId" className="form-control form-control-sm text-center" value={jam.areaOfTownId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Area Of Town --</option>
 {areas.map((area) => (
