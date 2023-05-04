@@ -77,7 +77,24 @@ namespace NashvilleJams.Repository
 
             }
         }
+        public void AddArea(AreaOfTown areaOfTown)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO AreaOfTown (Name)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Name)";
 
+                    DbUtils.AddParameter(cmd, "@Name", areaOfTown.Name);
+
+                    areaOfTown.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
 
     }
 }

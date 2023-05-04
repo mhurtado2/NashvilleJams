@@ -8,5 +8,6 @@ namespace NashvilleJams.Repository
     {
         public List<Genre> GetAllGenres();
         public Genre GetGenreById(int id);
+        public void AddGenre(Genre genre);
     }
 }

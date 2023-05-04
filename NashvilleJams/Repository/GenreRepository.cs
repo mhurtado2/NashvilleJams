@@ -78,6 +78,26 @@ namespace NashvilleJams.Repository
             }
         }
 
+        public void AddGenre(Genre genre)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Genre (Name)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Name)";
+
+                    DbUtils.AddParameter(cmd, "@Name", genre.Name);
+
+                    genre.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+
 
     }
 }

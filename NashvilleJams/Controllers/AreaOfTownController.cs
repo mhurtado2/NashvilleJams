@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NashvilleJams.Model;
 using NashvilleJams.Repository;
 
 namespace NashvilleJams.Controllers
@@ -32,5 +33,13 @@ namespace NashvilleJams.Controllers
             }
             return Ok(area);
         }
+
+        [HttpPost]
+        public IActionResult Post(AreaOfTown areaOfTown)
+        {
+            _areaOfTownRepository.AddArea(areaOfTown);
+            return CreatedAtAction(nameof(Get), new { id = areaOfTown.Id }, areaOfTown);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NashvilleJams.Model;
 using NashvilleJams.Repository;
 
 namespace NashvilleJams.Controllers
@@ -32,6 +33,15 @@ namespace NashvilleJams.Controllers
             }
             return Ok(genre);
         }
+
+
+        [HttpPost]
+        public IActionResult Post(Genre genre)
+        {
+            _genreRepository.AddGenre(genre);
+            return CreatedAtAction(nameof(Get), new { id = genre.Id }, genre);
+        }
+
 
 
     }

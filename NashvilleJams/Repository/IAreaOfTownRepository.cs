@@ -9,5 +9,7 @@ namespace NashvilleJams.Repository
     {
         public List<AreaOfTown> GetAllAreas();
         public AreaOfTown GetAreaById(int id);
+        public void AddArea(AreaOfTown areaOfTown);
+
     }
 }
