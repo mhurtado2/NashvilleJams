@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, FormText, Tooltip } from 'reactstrap';
 import { getAllAreas } from '../modules/areaManager';
 import { me } from '../modules/authManager';
 import { getAllGenres } from '../modules/genreManager';
 import { addJam } from '../modules/jamManager';
 import { addUserGenre, getUserGenres } from '../modules/userGenreManager';
-
 
 
 const JamForm = ({ getJam }) => {
@@ -52,6 +51,17 @@ const JamForm = ({ getJam }) => {
     });
   };
 
+  const [genreTooltipOpen, setGenreTooltipOpen] = useState(false);
+  const [areaTooltipOpen, setAreaTooltipOpen] = useState(false);
+
+const toggleGenreTooltip = () => {
+  setGenreTooltipOpen(!genreTooltipOpen);
+};
+
+const toggleAreaTooltip = () => {
+  setAreaTooltipOpen(!areaTooltipOpen);
+};
+
 
   return (
 <Form >
@@ -86,7 +96,20 @@ const JamForm = ({ getJam }) => {
           /> 
 
 
-<Label for ="genreId">Genre</Label> <Button className="btn btn-info m-4" onClick={() => navigate("/addGenre")}>Add Genre</Button>
+<Label for ="genreId">Genre</Label> 
+    <span id="addGenreTooltip">
+    <Button className="btn btn-info m-4" onClick={() => navigate("/addGenre")}>Add Genre</Button>
+    </span>
+        <Tooltip
+            placement="right"
+            isOpen={genreTooltipOpen}
+            target="addGenreTooltip"
+            toggle={toggleGenreTooltip}
+          >
+            Don't see the Genre for your Jam? Add a new Genre!
+          </Tooltip>
+
+
 <select id="genreId" className="form-control text-center form-control-sm" value={jam.genreId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Genre --</option>
 {genres.map((genre) => (
@@ -97,7 +120,21 @@ const JamForm = ({ getJam }) => {
 </select>
 
 
-<Label for ="areaOfTownId">Area Of Town</Label> <Button className="btn btn-info m-4" onClick={() => navigate("/addArea")}>Add Area</Button>
+<Label for ="areaOfTownId">Area Of Town</Label>
+      <span id="addAreaTooltip">
+      <Button className="btn btn-info m-4" onClick={() => navigate("/addArea")}>Add Area</Button> 
+      </span>
+
+      <Tooltip
+        placement="right"
+        isOpen={areaTooltipOpen}
+        target="addAreaTooltip"
+        toggle={toggleAreaTooltip}
+      >
+        Don't see the Area Of Town for your Jam? Add a new Area Of Town!
+      </Tooltip>
+
+
 <select id="areaOfTownId" className="form-control form-control-sm text-center" value={jam.areaOfTownId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
 <option value="">-- Select Area Of Town --</option>
 {areas.map((area) => (
