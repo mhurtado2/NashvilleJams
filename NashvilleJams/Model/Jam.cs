@@ -15,6 +15,7 @@ namespace NashvilleJams.Model
         public int GenreId { get; set; }
         public int UserId { get; set; }
         public int AreaOfTownId { get; set; }
+        public string JamDescription { get; set; }
         public User User { get; set; }
         public Genre Genre { get; set; }
         public AreaOfTown AreaOfTown { get; set; }

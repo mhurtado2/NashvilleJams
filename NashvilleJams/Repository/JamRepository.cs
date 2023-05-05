@@ -21,7 +21,7 @@ namespace NashvilleJams.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId,
+                    cmd.CommandText = @"SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId, j.JamDescription,
                     u.Id as UserID, u.FullName, u.Email, u.FireBaseUserID, a.Name as AreaName
                        
                        FROM Jam j
@@ -43,6 +43,7 @@ namespace NashvilleJams.Repository
                             GenreId = DbUtils.GetInt(reader, "GenreId"),
                             UserId = DbUtils.GetInt(reader, "UserId"),
                             AreaOfTownId = DbUtils.GetInt(reader, "AreaOfTownId"),
+                            JamDescription = DbUtils.GetString(reader, "JamDescription"),
                             User = new User
                             {
                                 Id = DbUtils.GetInt(reader, "Id"),
@@ -72,7 +73,7 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                              SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId, g.id AS GenreId, 
+                              SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId, j.JamDescription, g.id AS GenreId, 
                               g.Name AS GenreName, a.Id AS AreaId, a.Name AS AreaName
                               FROM Jam j
                               LEFT JOIN Genre g on g.Id = j.GenreId
@@ -95,6 +96,7 @@ namespace NashvilleJams.Repository
                                 GenreId = DbUtils.GetInt(reader, "GenreId"),
                                 UserId = DbUtils.GetInt(reader, "UserId"),
                                 AreaOfTownId = DbUtils.GetInt(reader, "AreaOfTownId"),
+                                JamDescription = DbUtils.GetString(reader, "JamDescription"),
                                 Genre = new Genre
                                 {
                                     Id = DbUtils.GetInt(reader, "GenreId"),
@@ -129,9 +131,9 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Jam (JamName, VenueName, ImageUrl, Address, UserId, GenreId, AreaOfTownId)
+                        INSERT INTO Jam (JamName, VenueName, ImageUrl, Address, UserId, GenreId, AreaOfTownId, JamDescription)
                         OUTPUT INSERTED.ID
-                        VALUES (@JamName, @VenueName, @ImageUrl, @Address, @UserId, @GenreId, @AreaOfTownId)";
+                        VALUES (@JamName, @VenueName, @ImageUrl, @Address, @UserId, @GenreId, @AreaOfTownId, @JamDescription)";
 
                     DbUtils.AddParameter(cmd, "@JamName", jam.JamName);
                     DbUtils.AddParameter(cmd, "@VenueName", jam.VenueName);
@@ -140,6 +142,7 @@ namespace NashvilleJams.Repository
                     DbUtils.AddParameter(cmd, "@GenreId", jam.GenreId);
                     DbUtils.AddParameter(cmd, "@UserId", jam.UserId);
                     DbUtils.AddParameter(cmd, "@AreaOfTownId", jam.AreaOfTownId);
+                    DbUtils.AddParameter(cmd, "@JamDescription", jam.JamDescription);
 
                     jam.Id = (int)cmd.ExecuteScalar();
                 }
@@ -188,6 +191,7 @@ namespace NashvilleJams.Repository
                             Address = @address,
                             GenreId = @genreId,
                             AreaOfTownId = @areaOfTownId
+                            JamDescription = @jamDescription
                             WHERE Id = @id" ;
 
                     DbUtils.AddParameter(cmd, "@id", jam.Id);
@@ -197,6 +201,7 @@ namespace NashvilleJams.Repository
                     cmd.Parameters.AddWithValue("@address", jam.Address);
                     cmd.Parameters.AddWithValue("@genreId", jam.GenreId);
                     cmd.Parameters.AddWithValue("@areaOfTownId", jam.AreaOfTownId);
+                    cmd.Parameters.AddWithValue("@jamDescription", jam.JamDescription);
 
 
                     cmd.ExecuteNonQuery();
@@ -229,7 +234,7 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     var sql = @"
-            SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId, g.id AS GenreId, 
+            SELECT j.Id, j.JamName, j.VenueName, j.ImageUrl, j.Address, j.GenreId, j.UserId, j.AreaOfTownId, j.JamDescription, g.id AS GenreId, 
                               g.Name AS GenreName, a.Id AS AreaId, a.Name AS AreaName
                               FROM Jam j
                               LEFT JOIN Genre g on g.Id = j.GenreId
@@ -263,6 +268,7 @@ namespace NashvilleJams.Repository
                                 GenreId = DbUtils.GetInt(reader, "GenreId"),
                                 UserId = DbUtils.GetInt(reader, "UserId"),
                                 AreaOfTownId = DbUtils.GetInt(reader, "AreaOfTownId"),
+                                JamDescription = DbUtils.GetString(reader, "JamDescription"),
                                 Genre = new Genre
                                 {
                                     Id = DbUtils.GetInt(reader, "GenreId"),
