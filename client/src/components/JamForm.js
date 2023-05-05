@@ -15,7 +15,8 @@ const JamForm = ({ getJam }) => {
     address: '',
     imageUrl: '',
     genreId: 0,
-    areaOfTownId:0
+    areaOfTownId:0,
+    jamDescription: ''
   };
 
   const [jam, setJam] = useState(emptyJam);
@@ -91,6 +92,13 @@ const toggleAreaTooltip = () => {
          <Label for="imageUrl">Image</Label>
         <textarea type="text" name="imageUrl" id="imageUrl" className='form-control'
           value={jam.imageUrl}
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+          /> 
+
+<Label for="jamDescription">Description</Label>
+        <textarea type="text" name="jamDescription" id="jamDescription" className='form-control'
+          value={jam.jamDescription}
           onChange={handleInputChange} 
           style={{width : "80%", margin : "16px 16px 16px 175px"}}
           /> 

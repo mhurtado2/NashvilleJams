@@ -90,6 +90,13 @@ const JamEdit = () => {
           style={{width : "80%", margin : "16px 16px 16px 175px" }} 
           /> 
 
+      <Label for="jamDescription">Description</Label>
+        <textarea type="text" name="jamDescription" id="jamDescription" className='form-control'
+          value={jam.jamDescription}
+          onChange={handleInputChange} 
+          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+          /> 
+
 
 <Label for ="genreId">Genre</Label>
 <select id="genreId" className="form-control text-center" value={jam.genreId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>

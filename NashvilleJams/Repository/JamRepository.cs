@@ -190,7 +190,7 @@ namespace NashvilleJams.Repository
                             ImageUrl = @imageUrl,
                             Address = @address,
                             GenreId = @genreId,
-                            AreaOfTownId = @areaOfTownId
+                            AreaOfTownId = @areaOfTownId,
                             JamDescription = @jamDescription
                             WHERE Id = @id" ;
 
