@@ -11,5 +11,7 @@ namespace NashvilleJams.Repository
         public AreaOfTown GetAreaById(int id);
         public void AddArea(AreaOfTown areaOfTown);
 
+        public void UpdateArea(AreaOfTown areaOfTown);
+
     }
 }

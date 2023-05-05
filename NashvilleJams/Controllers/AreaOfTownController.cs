@@ -41,5 +41,17 @@ namespace NashvilleJams.Controllers
             return CreatedAtAction(nameof(Get), new { id = areaOfTown.Id }, areaOfTown);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, AreaOfTown areaOfTown)
+        {
+            if (id != areaOfTown.Id)
+            {
+                return BadRequest();
+            }
+
+            _areaOfTownRepository.UpdateArea(areaOfTown);
+            return NoContent();
+        }
+
     }
 }

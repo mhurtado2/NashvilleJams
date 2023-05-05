@@ -79,3 +79,4 @@ const [user, setUser] = useState({});
 };
 
 export default JamDetails;
+

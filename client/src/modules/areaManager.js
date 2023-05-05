@@ -7,7 +7,6 @@ export const getAllAreas = () => {
 };
 
 
-
 export const addArea = (areaOfTown) => {
     return fetch(_apiUrl, {
       method: "POST",
@@ -15,5 +14,20 @@ export const addArea = (areaOfTown) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(areaOfTown),
+    });
+  };
+
+  export const getAreaById = (id) => {
+    return fetch(`${_apiUrl}/${id}`)
+      .then((res) => res.json())
+  };
+
+  export const updateArea = (area) => {
+    return fetch(`${_apiUrl}/${area.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(area),
     });
   };

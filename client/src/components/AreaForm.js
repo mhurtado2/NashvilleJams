@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
 import { addArea } from '../modules/areaManager';
+import { me } from '../modules/authManager';
+import AreaFormEdit from './AreaFormEdit';
 
 
 
@@ -11,6 +13,7 @@ const AreaForm = ({ getArea }) => {
   };
 
   const [area, setArea] = useState(emptyArea);
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
 
 
@@ -35,8 +38,13 @@ const AreaForm = ({ getArea }) => {
     });
   };
 
+  useEffect(() => {
+   me().then(setUser);
+}, []);
+
 
   return (
+    <>
 <Form >
       <FormGroup > 
         <React.Fragment >
@@ -52,6 +60,11 @@ const AreaForm = ({ getArea }) => {
       <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
       <Button className="btn btn-secondary m-4" onClick={() => navigate("/add")}>Cancel</Button>
     </Form>
+              
+              <h2>Edit Area Of Town</h2>
+              <AreaFormEdit/>  
+    </>
+
   );
 };
 

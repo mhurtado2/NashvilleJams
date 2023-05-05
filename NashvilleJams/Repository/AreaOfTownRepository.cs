@@ -96,5 +96,27 @@ namespace NashvilleJams.Repository
             }
         }
 
+        public void UpdateArea(AreaOfTown areaOfTown)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE AreaOfTown
+                            SET 
+                            Name = @name
+                            WHERE Id = @id";
+
+                    DbUtils.AddParameter(cmd, "@id", areaOfTown.Id);
+                    cmd.Parameters.AddWithValue("@name", areaOfTown.Name);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
