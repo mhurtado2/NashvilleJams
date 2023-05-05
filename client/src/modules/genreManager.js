@@ -14,3 +14,19 @@ export const addGenre = (genre) => {
       body: JSON.stringify(genre),
     });
   };
+
+  
+export const getGenreById = (id) => {
+  return fetch(`${_apiUrl}/${id}`)
+    .then((res) => res.json())
+};
+
+export const updateGenre = (genre) => {
+  return fetch(`${_apiUrl}/${genre.id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(genre),
+  });
+};

@@ -42,6 +42,17 @@ namespace NashvilleJams.Controllers
             return CreatedAtAction(nameof(Get), new { id = genre.Id }, genre);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Genre genre)
+        {
+            if (id != genre.Id)
+            {
+                return BadRequest();
+            }
+
+            _genreRepository.UpdateGenre(genre);
+            return NoContent();
+        }
 
 
     }

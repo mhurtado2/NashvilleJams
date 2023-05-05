@@ -6,6 +6,7 @@ import { me } from '../modules/authManager';
 import { addGenre, getAllGenres } from '../modules/genreManager';
 import { addJam } from '../modules/jamManager';
 import { addUserGenre, getUserGenres } from '../modules/userGenreManager';
+import GenreFormEdit from './GenreFormEdit';
 
 
 
@@ -41,7 +42,8 @@ const GenreForm = ({ getGenre }) => {
 
 
   return (
-<Form >
+    <>
+  <Form >
       <FormGroup > 
         <React.Fragment >
         <Label for="Name">Genre Name</Label>
@@ -56,6 +58,9 @@ const GenreForm = ({ getGenre }) => {
       <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
       <Button className="btn btn-secondary m-4" onClick={() => navigate("/add")}>Cancel</Button>
     </Form>
+    <h2>Edit A Genre</h2>
+    <GenreFormEdit/>
+    </>
   );
 };
 

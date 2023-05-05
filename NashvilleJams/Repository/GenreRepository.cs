@@ -97,6 +97,28 @@ namespace NashvilleJams.Repository
             }
         }
 
+        public void UpdateGenre(Genre genre)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            UPDATE Genre
+                            SET 
+                            Name = @name
+                            WHERE Id = @id";
+
+                    DbUtils.AddParameter(cmd, "@id", genre.Id);
+                    cmd.Parameters.AddWithValue("@name", genre.Name);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
 
     }
