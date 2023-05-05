@@ -55,5 +55,13 @@ namespace NashvilleJams.Controllers
         }
 
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _genreRepository.DeleteGenre(id);
+            return NoContent();
+        }
+
+
     }
 }

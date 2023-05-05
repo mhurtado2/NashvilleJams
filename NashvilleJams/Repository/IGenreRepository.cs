@@ -10,5 +10,6 @@ namespace NashvilleJams.Repository
         public Genre GetGenreById(int id);
         public void AddGenre(Genre genre);
         public void UpdateGenre(Genre genre);
+        public void DeleteGenre(int id);
     }
 }
