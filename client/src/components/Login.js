@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Container, Row, Col } from "reactstrap";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../modules/authManager";
+
 
 export default function Login() {
   let navigate = useNavigate();
@@ -17,25 +18,50 @@ export default function Login() {
   };
 
   return (
-    <Form onSubmit={loginSubmit}>
+    <>
+        <div>  
+        <h2 className="mb-6">Welcome To Nashville Jams!</h2>
+        </div>
+
+        <Container 
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%"
+        }}
+        >
+        
+        <Form 
+          onSubmit={loginSubmit}
+          style={{
+            backgroundColor: "grey",
+            padding: "1rem",
+            borderRadius: "1rem",
+            width: "60%",
+            margin: "0 auto"
+          }}
+          >
+
+    
       <fieldset>
-        <FormGroup>
+        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
           <Label for="email">Email</Label>
           <Input
             id="email"
             type="text"
             autoFocus
             onChange={(e) => setEmail(e.target.value)}
-            style={{width : "80%", margin : "16px 16px 16px 175px" }}
+            style={{width : "50%", marginLeft : "1rem" }}
           />
         </FormGroup>
-        <FormGroup>
+        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
           <Label for="password">Password</Label>
           <Input
             id="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
-            style={{width : "80%", margin : "16px 16px 16px 175px" }}
+            style={{width : "50%", marginLeft : "1rem" }}
           />
         </FormGroup>
         <FormGroup>
@@ -46,5 +72,7 @@ export default function Login() {
         </em>
       </fieldset>
     </Form>
+    </Container>
+    </>
   );
 }

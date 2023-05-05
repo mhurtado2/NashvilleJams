@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import { register } from "../modules/authManager";
 
@@ -23,43 +23,64 @@ export default function Register() {
   };
 
   return (
-    <Form onSubmit={registerClick}>
+
+    <>
+    <Container 
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100%"
+    }}
+    >
+    
+    <Form 
+      onSubmit={registerClick}
+      style={{
+        backgroundColor: "grey",
+        padding: "1rem",
+        borderRadius: "1rem",
+        width: "60%",
+        margin: "0 auto"
+      }}
+      >
+    
       <fieldset>
-        <FormGroup>
+        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
           <Label htmlFor="fullName">Name</Label>
           <Input
             id="fullName"
             type="text"
             autoFocus
             onChange={(e) => setfullName(e.target.value)}
-            style={{width : "80%", margin : "16px 16px 16px 175px" }}
+            style={{width : "50%", marginLeft : "1rem" }}
           />
         </FormGroup>
-        <FormGroup>
+        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
           <Label for="email">Email</Label>
           <Input
             id="email"
             type="text"
             onChange={(e) => setEmail(e.target.value)}
-            style={{width : "80%", margin : "16px 16px 16px 175px" }}
+            style={{width : "50%", marginLeft : "1rem" }}
           />
         </FormGroup>
-        <FormGroup>
+        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
           <Label for="password">Password</Label>
           <Input
             id="password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
-            style={{width : "80%", margin : "16px 16px 16px 175px" }}
+            style={{width : "50%", marginLeft : "1rem" }}
           />
-        </FormGroup>
-        <FormGroup>
+        </FormGroup >
+        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
           <Label for="confirmPassword">Confirm Password</Label>
           <Input
             id="confirmPassword"
             type="password"
             onChange={(e) => setConfirmPassword(e.target.value)}
-            style={{width : "80%", margin : "16px 16px 16px 175px" }}
+            style={{width : "50%", marginLeft : "1rem" }}
           />
         </FormGroup>
         <FormGroup>
@@ -67,5 +88,7 @@ export default function Register() {
         </FormGroup>
       </fieldset>
     </Form>
+    </Container>
+    </>
   );
 }
