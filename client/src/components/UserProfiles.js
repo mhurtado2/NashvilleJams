@@ -13,13 +13,11 @@ const UserProfiles = () => {
   }, []);
 
 
-
   return (
-    <div className="container justify-content-between justify-content-center mr-2">
+    <div className="container d-flex justify-content-between" >
 
-    <div className="d-flex flex-wrap shadow mr-2"></div>
       {userProfiles.map((user) => (
-        <UserProfileCard key={user.id} user={user} style={{marginRight : '10px'}} />
+        <UserProfileCard key={user.id} user={user} style={{width: "500px"}}/>
       ))}
     </div>
   );

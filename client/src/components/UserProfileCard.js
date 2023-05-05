@@ -15,8 +15,8 @@ import "bootstrap/dist/css/bootstrap.css";
 const UserProfileCard = ({ user }) => {
 
   return (
-    <Card className="mr-2 shadow justify-content-between">
-      <CardBody key={user.id} className="border mr-2">
+    <Card className="shadow-lg" style={{width: "500px"}}>
+      <CardBody key={user.id}>
         <>
             <h2>
                 {user.fullName}
