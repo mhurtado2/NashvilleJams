@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, FormText, Tooltip } from 'reactstrap';
-import { getAllAreas, getAreaById, updateArea } from '../modules/areaManager';
+import { deleteArea, getAllAreas, getAreaById, updateArea } from '../modules/areaManager';
 import { getAllJams } from '../modules/jamManager';
 
 
-const AreaFormEdit = ({ getArea }) => {
+const AreaDelete = ({ getArea }) => {
  
 //get areas
   const [areas, setAreas] = useState([]);
@@ -15,12 +15,6 @@ const AreaFormEdit = ({ getArea }) => {
   const { id } = useParams();
   const [selectedArea, setSelectedArea] = useState(null);
 
-//toggle edit form
-  const [editFormOpen, setEditFormOpen] = useState(false);
-
-  const toggleEditForm = () => {
-    setEditFormOpen(!editFormOpen);
-  }
 
   const navigate = useNavigate();
 
@@ -40,7 +34,7 @@ const AreaFormEdit = ({ getArea }) => {
   const handleSave = (evt) => {
     evt.preventDefault();
 
-    updateArea(selectedArea).then((p) => {
+    deleteArea(selectedArea.id).then((p) => {
         // Navigate the user back to the home route
         navigate("/addArea");
         window.location.reload();
@@ -66,22 +60,7 @@ const AreaFormEdit = ({ getArea }) => {
 
         </React.Fragment>
       </FormGroup>
-      <Button className="btn btn-dark m-4" onClick={toggleEditForm}>{editFormOpen ? 'Hide Edit Form' : 'Edit Area'}</Button>
-      {editFormOpen && selectedArea && (
-        <Form>
-     
-        <Label for="Name" style={{ fontWeight: "bold" }} >Area Name</Label>
-        <textarea type="text" name="Name" id="Name" className='form-control'
-          value={selectedArea.Name}    
-
-        onChange={(e) => 
-            setSelectedArea({ ...selectedArea, name: e.target.value})}
-          style={{width : "80%", margin : "16px 16px 16px 175px"}}
-          />     
-
-      <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
-        </Form>
-      )}
+      <Button className="btn btn-danger m-4" onClick={handleSave}>Delete</Button>
      
     </Form>
 
@@ -89,4 +68,4 @@ const AreaFormEdit = ({ getArea }) => {
   );
 };
 
-export default AreaFormEdit;
+export default AreaDelete;

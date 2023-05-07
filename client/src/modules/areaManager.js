@@ -31,3 +31,14 @@ export const addArea = (areaOfTown) => {
       body: JSON.stringify(area),
     });
   };
+
+  
+export const deleteArea = (id) => {
+  return fetch(`${_apiUrl}/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(id),
+  });
+};

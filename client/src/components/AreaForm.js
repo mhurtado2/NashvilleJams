@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, FormText } from 'reactstrap';
 import { addArea } from '../modules/areaManager';
 import { me } from '../modules/authManager';
+import AreaDelete from './AreaDelete';
 import AreaFormEdit from './AreaFormEdit';
 
 
@@ -63,6 +64,9 @@ const AreaForm = ({ getArea }) => {
               
               <h2>Edit Area Of Town</h2>
               <AreaFormEdit/>  
+
+              <h2>Delete Area Of Town</h2>
+              <AreaDelete />  
     </>
 
   );

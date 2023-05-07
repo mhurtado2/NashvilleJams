@@ -13,5 +13,7 @@ namespace NashvilleJams.Repository
 
         public void UpdateArea(AreaOfTown areaOfTown);
 
+        public void DeleteArea(int id);
+
     }
 }

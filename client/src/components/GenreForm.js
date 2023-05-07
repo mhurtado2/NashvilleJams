@@ -6,6 +6,7 @@ import { me } from '../modules/authManager';
 import { addGenre, getAllGenres } from '../modules/genreManager';
 import { addJam } from '../modules/jamManager';
 import { addUserGenre, getUserGenres } from '../modules/userGenreManager';
+import GenreDelete from './GenreDelete';
 import GenreFormEdit from './GenreFormEdit';
 
 
@@ -60,6 +61,8 @@ const GenreForm = ({ getGenre }) => {
     </Form>
     <h2>Edit A Genre</h2>
     <GenreFormEdit/>
+    <h2>Delte A Genre</h2>
+    <GenreDelete />
     </>
   );
 };

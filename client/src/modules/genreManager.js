@@ -30,3 +30,14 @@ export const updateGenre = (genre) => {
     body: JSON.stringify(genre),
   });
 };
+
+
+export const deleteGenre = (id) => {
+  return fetch(`${_apiUrl}/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(id),
+  });
+};

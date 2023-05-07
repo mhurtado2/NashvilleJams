@@ -15,8 +15,7 @@ const UserProfiles = () => {
 
   return (
     <>
-
-   <h2>User Profiles</h2>
+    
     <div className="container text-center" >
         <div className="d-flex flex-wrap justify-content-between mb-2">
           {userProfiles.map((user) => (
@@ -24,7 +23,7 @@ const UserProfiles = () => {
           ))}
         </div>
     </div>
-    
+
     </>
   );
 };

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, FormText, Tooltip } from 'reactstrap';
-import { getAllGenres, getGenreById, updateGenre } from '../modules/genreManager';
+import { deleteGenre, getAllGenres, getGenreById, updateGenre } from '../modules/genreManager';
 
 
 
-const GenreFormEdit = ({ getGenre }) => {
+const GenreDelete = ({ getGenre }) => {
  
 //get genres
   const [genres, setGenres] = useState([]);
@@ -15,12 +15,6 @@ const GenreFormEdit = ({ getGenre }) => {
   const { id } = useParams();
   const [selectedGenre, setSelectedGenre] = useState(null);
 
-//toggle edit form
-  const [editFormOpen, setEditFormOpen] = useState(false);
-
-  const toggleEditForm = () => {
-    setEditFormOpen(!editFormOpen);
-  }
 
   const navigate = useNavigate();
 
@@ -40,7 +34,7 @@ const GenreFormEdit = ({ getGenre }) => {
   const handleSave = (evt) => {
     evt.preventDefault();
 
-    updateGenre(selectedGenre).then((p) => {
+    deleteGenre(selectedGenre.id).then((p) => {
         // Navigate the user back to the home route
         navigate("/addGenre");
         window.location.reload();
@@ -66,22 +60,7 @@ const GenreFormEdit = ({ getGenre }) => {
 
         </React.Fragment>
       </FormGroup>
-      <Button className="btn btn-dark m-4" onClick={toggleEditForm}>{editFormOpen ? 'Hide Edit Form' : 'Edit Genre'}</Button>
-      {editFormOpen && selectedGenre && (
-        <Form>
-     
-        <Label for="Name" style={{ fontWeight: "bold" }} >Genre Name</Label>
-        <textarea type="text" name="Name" id="Name" className='form-control'
-          value={selectedGenre.Name}    
-
-        onChange={(e) => 
-            setSelectedGenre({ ...selectedGenre, name: e.target.value})}
-          style={{width : "80%", margin : "16px 16px 16px 175px"}}
-          />     
-
-      <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
-        </Form>
-      )}
+      <Button className="btn btn-danger m-4" onClick={handleSave}>Delete</Button>
      
     </Form>
 
@@ -89,4 +68,4 @@ const GenreFormEdit = ({ getGenre }) => {
   );
 };
 
-export default GenreFormEdit;
+export default GenreDelete;

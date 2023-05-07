@@ -53,5 +53,13 @@ namespace NashvilleJams.Controllers
             return NoContent();
         }
 
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _areaOfTownRepository.DeleteArea(id);
+            return NoContent();
+        }
+
     }
 }
