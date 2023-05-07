@@ -54,7 +54,7 @@ const GenreFormEdit = ({ getGenre }) => {
       <FormGroup > 
         <React.Fragment >
 
-            <Label for ="genreId">Genre</Label>  
+            <Label for ="genreId" style={{ fontWeight: "bold" }} >Genre</Label>  
             <select id="genreId" className="form-control text-center form-control-sm" value={selectedGenre?.Id} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
             <option value="">-- Select Genre --</option>
             {genres.map((genre) => (
@@ -70,7 +70,7 @@ const GenreFormEdit = ({ getGenre }) => {
       {editFormOpen && selectedGenre && (
         <Form>
      
-        <Label for="Name">Genre Name</Label>
+        <Label for="Name" style={{ fontWeight: "bold" }} >Genre Name</Label>
         <textarea type="text" name="Name" id="Name" className='form-control'
           value={selectedGenre.Name}    
 

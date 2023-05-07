@@ -48,7 +48,7 @@ export default function Register() {
     
       <fieldset>
         <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label htmlFor="fullName">Name</Label>
+          <Label htmlFor="fullName" style={{ fontWeight: "bold" }} >Name</Label>
           <Input
             id="fullName"
             type="text"
@@ -58,7 +58,7 @@ export default function Register() {
           />
         </FormGroup>
         <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="email">Email</Label>
+          <Label for="email" style={{ fontWeight: "bold" }} >Email</Label>
           <Input
             id="email"
             type="text"
@@ -67,7 +67,7 @@ export default function Register() {
           />
         </FormGroup>
         <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="password">Password</Label>
+          <Label for="password" style={{ fontWeight: "bold" }} >Password</Label>
           <Input
             id="password"
             type="password"
@@ -76,7 +76,7 @@ export default function Register() {
           />
         </FormGroup >
         <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="confirmPassword">Confirm Password</Label>
+          <Label for="confirmPassword" style={{ fontWeight: "bold" }} >Confirm Password</Label>
           <Input
             id="confirmPassword"
             type="password"

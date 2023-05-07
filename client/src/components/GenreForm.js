@@ -46,7 +46,7 @@ const GenreForm = ({ getGenre }) => {
   <Form >
       <FormGroup > 
         <React.Fragment >
-        <Label for="Name">Genre Name</Label>
+        <Label for="Name" style={{ fontWeight: "bold" }} >Genre Name</Label>
         <textarea type="text" name="Name" id="Name" className='form-control'
           value={genre.Name}    
           onChange={handleInputChange} 

@@ -46,7 +46,7 @@ export default function Login() {
     
       <fieldset>
         <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="email">Email</Label>
+          <Label for="email" style={{ fontWeight: "bold" }} >Email</Label>
           <Input
             id="email"
             type="text"
@@ -56,7 +56,7 @@ export default function Login() {
           />
         </FormGroup>
         <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="password">Password</Label>
+          <Label for="password" style={{ fontWeight: "bold" }} >Password</Label>
           <Input
             id="password"
             type="password"

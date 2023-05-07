@@ -54,7 +54,7 @@ const AreaFormEdit = ({ getArea }) => {
       <FormGroup > 
         <React.Fragment >
 
-            <Label for ="areaId">Area</Label>  
+            <Label for ="areaId" style={{ fontWeight: "bold" }} >Area</Label>  
             <select id="areaId" className="form-control text-center form-control-sm" value={selectedArea?.Id} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
             <option value="">-- Select Genre --</option>
             {areas.map((area) => (
@@ -70,7 +70,7 @@ const AreaFormEdit = ({ getArea }) => {
       {editFormOpen && selectedArea && (
         <Form>
      
-        <Label for="Name">Area Name</Label>
+        <Label for="Name" style={{ fontWeight: "bold" }} >Area Name</Label>
         <textarea type="text" name="Name" id="Name" className='form-control'
           value={selectedArea.Name}    
 

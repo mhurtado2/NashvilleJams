@@ -48,7 +48,7 @@ const AreaForm = ({ getArea }) => {
 <Form >
       <FormGroup > 
         <React.Fragment >
-        <Label for="Name">Area Of Town</Label>
+        <Label for="Name" style={{ fontWeight: "bold" }} >Area Of Town</Label>
         <textarea type="text" name="Name" id="Name" className='form-control'
           value={area.Name}    
           onChange={handleInputChange} 

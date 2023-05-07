@@ -68,35 +68,35 @@ const toggleAreaTooltip = () => {
 <Form >
       <FormGroup > 
         <React.Fragment >
-        <Label for="jamName">Jam Name</Label>
+        <Label for="jamName" style={{ fontWeight: "bold" }} >Jam Name</Label>
         <textarea type="text" name="jamName" id="jamName" className='form-control'
           value={jam.jamName}    
           onChange={handleInputChange} 
           style={{width : "80%", margin : "16px 16px 16px 175px"}}
           />     
 
-        <Label for="venueName">Venue Name</Label>
+        <Label for="venueName" style={{ fontWeight: "bold" }} >Venue Name</Label>
         <textarea type="text" name="venueName" id="venueName" className='form-control'
           value={jam.venueName}
           onChange={handleInputChange}
           style={{width : "80%", margin : "16px 16px 16px 175px"}} 
           />   
 
-        <Label for="address">Address</Label>
+        <Label for="address" style={{ fontWeight: "bold" }} >Address</Label>
         <textarea type="text" name="address" id="address" className='form-control'
           value={jam.address}
           onChange={handleInputChange}
           style={{width : "80%", margin : "16px 16px 16px 175px"}}
            />
 
-         <Label for="imageUrl">Image</Label>
+         <Label for="imageUrl" style={{ fontWeight: "bold" }} >Image</Label>
         <textarea type="text" name="imageUrl" id="imageUrl" className='form-control'
           value={jam.imageUrl}
           onChange={handleInputChange} 
           style={{width : "80%", margin : "16px 16px 16px 175px"}}
           /> 
 
-<Label for="jamDescription">Description</Label>
+<Label for="jamDescription" style={{ fontWeight: "bold" }} >Description</Label>
         <textarea type="text" name="jamDescription" id="jamDescription" className='form-control'
           value={jam.jamDescription}
           onChange={handleInputChange} 
@@ -104,7 +104,7 @@ const toggleAreaTooltip = () => {
           /> 
 
 
-<Label for ="genreId">Genre</Label> 
+<Label for ="genreId" style={{ fontWeight: "bold" }} >Genre</Label> 
     <span id="addGenreTooltip">
     <Button className="btn btn-info m-4" onClick={() => navigate("/addGenre")}>Add Genre</Button>
     </span>
@@ -128,7 +128,7 @@ const toggleAreaTooltip = () => {
 </select>
 
 
-<Label for ="areaOfTownId">Area Of Town</Label>
+<Label for ="areaOfTownId" style={{ fontWeight: "bold" }} >Area Of Town</Label>
       <span id="addAreaTooltip">
       <Button className="btn btn-info m-4" onClick={() => navigate("/addArea")}>Add Area</Button> 
       </span>
