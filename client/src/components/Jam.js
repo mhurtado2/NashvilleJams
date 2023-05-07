@@ -19,7 +19,11 @@ const Jam = ({ jam }) => {
             style={{width : '300px', height : "200px", margin : '20px'}}
             />
             </div>
-            <div style={{backgroundColor : "grey", borderRadius : '20px'}}>Area Of Town: {jam.areaOfTown?.name}</div>
+            <div style={{ borderRadius : '20px'}}>
+              <em>
+              Area Of Town: {jam.areaOfTown?.name}
+                </em>
+              </div>
           </div>
       </CardBody>
     </Card>

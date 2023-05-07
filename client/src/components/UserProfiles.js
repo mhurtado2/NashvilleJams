@@ -14,12 +14,18 @@ const UserProfiles = () => {
 
 
   return (
-    <div className="container d-flex justify-content-between" >
+    <>
 
-      {userProfiles.map((user) => (
-        <UserProfileCard key={user.id} user={user} style={{width: "500px"}}/>
-      ))}
+   <h2>User Profiles</h2>
+    <div className="container text-center" >
+        <div className="d-flex flex-wrap justify-content-between mb-2">
+          {userProfiles.map((user) => (
+            <UserProfileCard key={user.id} user={user} style={{width: "500px"}}/>
+          ))}
+        </div>
     </div>
+    
+    </>
   );
 };
 

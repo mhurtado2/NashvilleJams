@@ -27,8 +27,7 @@ const BluesJam = () => {
         {jams.map((jam) => (
             <React.Fragment key={jam.id}>
           <FilteredJam jam={jam} />
-          {/* <Button className="editBtn" onClick={() => navigate(`${jam.id}`)}>Edit</Button>
-          <Button className="deleteBtn" onClick={ ()=> deleteJam(`${jam.id}`)}>Delete</Button> */}
+        
           </React.Fragment>
         ))}
       </div>
