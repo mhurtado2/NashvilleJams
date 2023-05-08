@@ -61,7 +61,7 @@ const GenreForm = ({ getGenre }) => {
     </Form>
     <h2>Edit A Genre</h2>
     <GenreFormEdit/>
-    <h2>Delte A Genre</h2>
+    <h2>Delete A Genre</h2>
     <GenreDelete />
     </>
   );
