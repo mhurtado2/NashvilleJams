@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { Container } from "reactstrap";
 import AreaForm from "./AreaForm";
 import BluesJam from "./BluesJam";
 import CountryJam from "./CountryJam";
@@ -16,8 +17,11 @@ import UserProfiles from "./UserProfiles";
 
 
 
+
 export default function ApplicationViews({ isLoggedIn }) {
   return (
+    <Container fluid className="h-100vh-4rem">
+      
     <Routes>
       <Route path="/">
         <Route
@@ -41,5 +45,6 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="*" element={<p>Whoops, nothing here...</p>} />
       </Route>
     </Routes>
+    </Container>
   );
 }

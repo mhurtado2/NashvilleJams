@@ -22,11 +22,12 @@ namespace NashvilleJams.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT u.Id, u.FullName, u.Email, u.FireBaseUserId, ug.UserId as UserId,
-                        ug.GenreId as GenreId, g.Name as GenreName, g.Id as RandomId
+                    cmd.CommandText = @"SELECT u.Id, u.FullName, u.Email, u.FireBaseUserId, u.UserTypeId, ug.UserId as UserId,
+                        ug.GenreId as GenreId, g.Name as GenreName, g.Id as RandomId, ut.Id AS TypeId, ut.Name AS UserTypeName
                         FROM [User] u
                        INNER JOIN UserGenre ug on ug.UserId = u.Id
-                       INNER JOIN Genre g on g.Id = ug.GenreId";
+                       INNER JOIN Genre g on g.Id = ug.GenreId
+                       INNER JOIN UserType ut on ut.Id = u.UserTypeId";
 
 
                     var reader = cmd.ExecuteReader();
@@ -44,6 +45,12 @@ namespace NashvilleJams.Repository
                             FullName = DbUtils.GetString(reader, "FullName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
+                            UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
+                            UserType = new UserType
+                            {
+                                Id = DbUtils.GetInt(reader, "TypeId"),
+                                Name = DbUtils.GetString(reader, "UserTypeName"),
+                            },
                             UserGenre = new UserGenre
                             {
                                 UserId = DbUtils.GetInt(reader, "UserId"),
@@ -122,7 +129,7 @@ namespace NashvilleJams.Repository
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                       SELECT Id, FullName, Email, FireBaseUserId 
+                       SELECT Id, FullName, Email, FireBaseUserId, UserTypeId 
                               FROM [User]
                          WHERE FireBaseUserId = @FireBaseUserId";
 
@@ -139,6 +146,7 @@ namespace NashvilleJams.Repository
                             FullName = DbUtils.GetString(reader, "FullName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             FireBaseUserId = DbUtils.GetString(reader, "FireBaseUserId"),
+                            UserTypeId = DbUtils.GetInt(reader, "UserTypeId"),
                         };
                     }
                     reader.Close();

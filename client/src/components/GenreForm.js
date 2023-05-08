@@ -18,6 +18,7 @@ const GenreForm = ({ getGenre }) => {
 
   const [genre, setGenre] = useState(emptyGenre);
   const navigate = useNavigate();
+  const [user, setUser] = useState({});
 
 
   const handleInputChange = (evt) => {
@@ -41,6 +42,10 @@ const GenreForm = ({ getGenre }) => {
     });
   };
 
+  useEffect(() => {
+    me().then(setUser);
+  }, []); 
+
 
   return (
     <>
@@ -59,10 +64,14 @@ const GenreForm = ({ getGenre }) => {
       <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
       <Button className="btn btn-secondary m-4" onClick={() => navigate("/add")}>Cancel</Button>
     </Form>
-    <h2>Edit A Genre</h2>
-    <GenreFormEdit/>
-    <h2>Delete A Genre</h2>
-    <GenreDelete />
+            {user.userTypeId === 1 ? 
+            
+            <>
+              <h2>Edit A Genre</h2>
+              <GenreFormEdit/>
+              <h2>Delete A Genre</h2>
+              <GenreDelete /> </>: ""   
+            }
     </>
   );
 };

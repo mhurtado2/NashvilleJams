@@ -1,0 +1,3 @@
+﻿UPDATE [Jam]
+SET [JamDescription] = 'Join us for Jazz Monday at the Village Tavern! This weekly event features some of the best local jazz musicians in town. Sit back and enjoy a cozy atmosphere with your favorite cocktail as you listen to the smooth sounds of saxophones, pianos, and drums. No need to worry about bringing your own instrument - the Village Tavern provides everything you need to have a good time. Jazz Monday starts at 8pm and runs until midnight, so come early and stay late. Dont miss out on this weekly celebration of jazz and good times at the Village Tavern.'
+WHERE [Id] = 44;

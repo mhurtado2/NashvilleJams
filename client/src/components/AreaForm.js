@@ -61,12 +61,19 @@ const AreaForm = ({ getArea }) => {
       <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
       <Button className="btn btn-secondary m-4" onClick={() => navigate("/add")}>Cancel</Button>
     </Form>
-              
-              <h2>Edit Area Of Town</h2>
-              <AreaFormEdit/>  
+               
 
-              <h2>Delete Area Of Town</h2>
-              <AreaDelete />  
+           {user.userTypeId === 1 ? 
+            
+            <>
+              <h2>Edit Area Of Town</h2>
+                <AreaFormEdit/>  
+
+                <h2>Delete Area Of Town</h2>
+                <AreaDelete />
+            </>
+                : ""   
+            }
     </>
 
   );

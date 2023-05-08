@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Spinner } from "reactstrap";
+import { Container, Spinner } from "reactstrap";
 import Header from "./components/Header";
 import ApplicationViews from "./components/ApplicationViews";
 import { BrowserRouter } from "react-router-dom";
 import { onLoginStatusChange, me } from "./modules/authManager";
+
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -30,12 +32,14 @@ function App() {
   }
 
   return (
+    <Container fluid className="h-100vh-4rem" style={{ minHeight: '100vh'}}> 
     <div className="App">
       <BrowserRouter>
         <Header isLoggedIn={isLoggedIn} userProfile={userProfile} />
         <ApplicationViews isLoggedIn={isLoggedIn} />
       </BrowserRouter>
     </div>
+    </Container>
   );
 }
 
