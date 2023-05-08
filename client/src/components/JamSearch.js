@@ -37,6 +37,8 @@ const JamSearch = () => {
                 }
                 else {
                     setSortDescBool(false)
+                    //added this so page would go back once user unselects checkbox
+                    setSearchedJams([]);
                 }
             }}
             />

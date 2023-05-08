@@ -43,7 +43,7 @@ export default function Register() {
         borderRadius: "1rem",
         width: "60%",
         margin: "0 auto",
-        boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
+        // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
       }}
       >
     

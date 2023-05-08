@@ -42,7 +42,7 @@ export default function Login() {
             width: "60%",
             height: "50%",
             margin: "0 auto",
-            boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
+            // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
           }}
           >
 

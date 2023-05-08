@@ -32,21 +32,14 @@ const toggleTooltip = () => {
 
 
       <div className="d-flex flex-wrap justify-content-between">
+       
         {jams.map((jam) => (
             <React.Fragment key={jam.id}>
           <FilteredJam jam={jam} />
-                {/* <Tooltip
-                  placement="right"
-                  isOpen={tooltipOpen}
-                  target="addTooltip"
-                  toggle={toggleTooltip}
-                >
-                  Don't see the Genre for your Jam? Add a new Genre!
-                </Tooltip>
-              <span id="addTooltip">{jam.jamDescription}</span> */}
-        
+         
           </React.Fragment>
         ))}
+      
       </div>
 
     </div>
