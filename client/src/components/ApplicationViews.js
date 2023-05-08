@@ -20,7 +20,7 @@ import UserProfiles from "./UserProfiles";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
-    <Container fluid className="h-100vh-4rem">
+
       
     <Routes>
       <Route path="/">
@@ -45,6 +45,6 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="*" element={<p>Whoops, nothing here...</p>} />
       </Route>
     </Routes>
-    </Container>
+    
   );
 }

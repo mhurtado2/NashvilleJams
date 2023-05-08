@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Tooltip } from "reactstrap";
+import { Button, Col, Row, Tooltip } from "reactstrap";
 import { deleteJam, getAllJams } from "../modules/jamManager";
 import FilteredJam from "./FilteredJam";
+
+
 
 const BluesJam = () => {
   const [jams, setJams] = useState([]);

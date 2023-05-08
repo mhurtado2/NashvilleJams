@@ -57,7 +57,7 @@ const [user, setUser] = useState({});
       <div className="row ml-auto justify-content-center">
           <JamDeets jam={jam} />
           {
-            jam.userId == user.id ? <> <Button className="btn btn-success m-4" onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
+            jam.userId == user.id ? <> <Button className="btn btn-success m-4" style={{width: "350px"}} onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
             <Button
             className="btn btn-danger m-4"
             onClick={() => {
@@ -65,6 +65,7 @@ const [user, setUser] = useState({});
                 setIsOpen(!isOpen);
                 
             }}
+            style={{width: "350px"}}
         >
             Delete Jam
         </Button>

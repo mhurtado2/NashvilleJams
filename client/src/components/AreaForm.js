@@ -49,11 +49,12 @@ const AreaForm = ({ getArea }) => {
 <Form >
       <FormGroup > 
         <React.Fragment >
+        <h2>Add A Area</h2>
         <Label for="Name" style={{ fontWeight: "bold" }} >Area Of Town</Label>
         <textarea type="text" name="Name" id="Name" className='form-control'
           value={area.Name}    
           onChange={handleInputChange} 
-          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+          style={{width : "60%", margin : "16px 16px 16px 400px"}}
           />     
 
         </React.Fragment>

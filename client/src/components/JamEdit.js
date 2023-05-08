@@ -60,46 +60,55 @@ const JamEdit = () => {
   }
 
   return (
-    <Form>
-      <FormGroup>
+    <Form >
+  <div style={{textAlign: "center"}}>
+      <FormGroup     style={{
+            backgroundColor: "rgba(173, 165, 169, 0.8)",
+            padding: "1rem",
+            borderRadius: "1rem",
+            width: "60%",
+            height: "50%",
+            margin: "0 auto",
+            boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
+          }}> 
         <Label for="jamName" style={{ fontWeight: "bold" }} >Jam Name</Label>
         <textarea type="text" name="jamName" id="jamName" className='form-control text-center'
           value={jam.jamName}
           onChange={handleInputChange} 
-          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+          style={{width : "60%", margin : "16px 16px 16px 250px"  }}
           />     
 
         <Label for="venueName" style={{ fontWeight: "bold" }} >Venue Name</Label>
         <textarea type="text" name="venueName" id="venueName" className='form-control text-center'
           value={jam.venueName}
           onChange={handleInputChange} 
-          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+          style={{width : "60%", margin : "16px 16px 16px 250px"  }}
           />   
 
         <Label for="address" style={{ fontWeight: "bold" }} >Address</Label>
         <textarea type="text" name="address" id="address" className='form-control text-center'
           value={jam.address}
           onChange={handleInputChange}
-          style={{width : "80%", margin : "16px 16px 16px 175px" }}
+          style={{width : "60%", margin : "16px 16px 16px 250px"  }}
            />
 
          <Label for="imageUrl" style={{ fontWeight: "bold" }}>Image</Label>
         <textarea type="text" name="imageUrl" id="imageUrl" className='form-control text-center' 
           value={jam.imageUrl}
           onChange={handleInputChange}
-          style={{width : "80%", margin : "16px 16px 16px 175px" }} 
+          style={{width : "60%", margin : "16px 16px 16px 250px"  }} 
           /> 
 
       <Label for="jamDescription" style={{ fontWeight: "bold" }} >Description</Label>
         <textarea type="text" name="jamDescription" id="jamDescription" className='form-control'
           value={jam.jamDescription}
           onChange={handleInputChange} 
-          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+          style={{width : "60%", margin : "16px 16px 16px 250px" }}
           /> 
 
 
 <Label for ="genreId" style={{ fontWeight: "bold" }} >Genre</Label>
-<select id="genreId" className="form-control text-center" value={jam.genreId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
+<select id="genreId" className="form-control text-center" value={jam.genreId} onChange={handleInputChange} style={{width : "60%", margin : "16px 16px 16px 250px"  }}>
 <option value="">-- Select Genre --</option>
 {genres.map((genre) => (
     <option key={genre.id} value={genre.id}>
@@ -110,7 +119,7 @@ const JamEdit = () => {
 
 
 <Label for ="areaOfTownId" style={{ fontWeight: "bold" }} >Area Of Town</Label>
-<select id="areaOfTownId" className="form-control text-center" value={jam.areaOfTownId} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
+<select id="areaOfTownId" className="form-control text-center" value={jam.areaOfTownId} onChange={handleInputChange} style={{width : "60%", margin : "16px 16px 16px 250px"  }}>
 <option value="">-- Select Area Of Town --</option>
 {areas.map((area) => (
     <option key={area.id} value={area.id}>
@@ -121,6 +130,7 @@ const JamEdit = () => {
 
         
       </FormGroup>
+      </div>
       <Button className="btn btn-success m-4" onClick={handleSave}>Save</Button>
       <Button className="btn btn-secondary m-4" onClick={() => navigate("/")}>Cancel</Button>
     </Form>

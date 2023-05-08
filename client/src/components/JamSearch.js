@@ -16,14 +16,16 @@ const JamSearch = () => {
 
     return <article>
         <section>
+            <div>
             <input 
             type = "text"
             placeholder="Enter Search Terms"
             onChange={(changeEvent) => {
                 setQueryString(changeEvent.target.value)
             }}
-            style={{width : "80%", margin : "16px 175px 16px 175px", textAlign : "center"}} 
+            style={{width : "50%", margin : "16px 175px 16px 175px", textAlign : "center", borderRadius : "10px"}} 
             />
+            </div>
         <label>
             Sort by Descending
             <input 

@@ -18,7 +18,7 @@ const FilteredJam = ({ jam }) => {
   };
    
   return (
-    <Card className="d-flex flex-row justify-content-between mb-2 shadow">
+    <Card className="d-flex flex-wrap justify-content-between shadow mb-2">
       <CardBody >
           <div>
               <h2>{jam.jamName}</h2>

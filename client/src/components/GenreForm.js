@@ -48,15 +48,24 @@ const GenreForm = ({ getGenre }) => {
 
 
   return (
-    <>
+    <React.Fragment style={{
+      backgroundColor: "rgba(173, 165, 169, 0.8)",
+      padding: "1rem",
+      borderRadius: "1rem",
+      width: "60%",
+      height: "50%",
+      margin: "0 auto",
+      boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
+    }}>
   <Form >
       <FormGroup > 
         <React.Fragment >
+          <h2>Add A Genre</h2>
         <Label for="Name" style={{ fontWeight: "bold" }} >Genre Name</Label>
         <textarea type="text" name="Name" id="Name" className='form-control'
           value={genre.Name}    
           onChange={handleInputChange} 
-          style={{width : "80%", margin : "16px 16px 16px 175px"}}
+          style={{width : "60%", margin : "16px 16px 16px 400px"}}
           />     
 
         </React.Fragment>
@@ -72,7 +81,7 @@ const GenreForm = ({ getGenre }) => {
               <h2>Delete A Genre</h2>
               <GenreDelete /> </>: ""   
             }
-    </>
+    </React.Fragment>
   );
 };
 

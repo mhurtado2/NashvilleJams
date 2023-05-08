@@ -32,15 +32,16 @@ function App() {
   }
 
   return (
-    <Container fluid className="h-100vh-4rem" style={{ minHeight: '100vh'}}> 
+   
     <div className="App">
       <BrowserRouter>
         <Header isLoggedIn={isLoggedIn} userProfile={userProfile} />
         <ApplicationViews isLoggedIn={isLoggedIn} />
       </BrowserRouter>
     </div>
-    </Container>
+ 
   );
 }
 
 export default App;
+

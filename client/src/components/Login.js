@@ -19,9 +19,9 @@ export default function Login() {
 
   return (
     <>
-        <div>  
-        <h2 className="mb-6">Welcome To Nashville Jams!</h2>
-        </div>
+          <div className="mb-6 mb-4">  
+          <h2 className="mb-6">Welcome To Nashville Jams!</h2>
+          </div>
 
         <Container 
         style={{
@@ -31,15 +31,18 @@ export default function Login() {
           height: "100%"
         }}
         >
-        
+  
+
         <Form 
           onSubmit={loginSubmit}
           style={{
-            backgroundColor: "grey",
+            backgroundColor: "rgba(173, 165, 169, 0.8)",
             padding: "1rem",
             borderRadius: "1rem",
             width: "60%",
-            margin: "0 auto"
+            height: "50%",
+            margin: "0 auto",
+            boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
           }}
           >
 

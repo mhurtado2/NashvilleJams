@@ -49,7 +49,7 @@ const GenreDelete = ({ getGenre }) => {
         <React.Fragment >
 
             <Label for ="genreId" style={{ fontWeight: "bold" }} >Genre</Label>  
-            <select id="genreId" className="form-control text-center form-control-sm" value={selectedGenre?.Id} onChange={handleInputChange} style={{width : "80%", margin : "16px 16px 16px 175px" }}>
+            <select id="genreId" className="form-control text-center form-control-sm" value={selectedGenre?.Id} onChange={handleInputChange} style={{ width : "60%", margin : "16px 16px 16px 400px" }}>
             <option value="">-- Select Genre --</option>
             {genres.map((genre) => (
                 <option key={genre.id} value={genre.id}>

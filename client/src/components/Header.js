@@ -20,9 +20,9 @@ export default function Header({ isLoggedIn, userProfile }) {
       <Navbar color="dark" className="m-2" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
            <img 
-            src= "https://th.bing.com/th/id/OIP.MefRqJY_zYzMN2iNcj4HzgHaHa?w=212&h=213&c=7&r=0&o=5&pid=1.7"
+            src= "https://th.bing.com/th/id/R.12fd188a3ad1053da103f80f2d97fc97?rik=HJPHmS7t6HFDKA&riu=http%3a%2f%2fsouthparktavern.com%2fwp-content%2fuploads%2f2018%2f10%2fGuitar.png&ehk=DJmGipKcMBe7OOqVIBgwFo%2fv84Ygu9y%2bs893P%2bUXM30%3d&risl=&pid=ImgRaw&r=0"
             alt = "Nashville Jams"
-            className = "jam-img rounded-circle"
+            className = ""
             style={{width : '80px'}}
             />
         </NavbarBrand>

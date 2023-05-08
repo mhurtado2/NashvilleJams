@@ -25,7 +25,7 @@ export default function Register() {
   return (
 
     <>
-    <h2>Register</h2>
+    <h2 className="mb-4">Register</h2>
     <Container 
     style={{
       display: "flex",
@@ -38,11 +38,12 @@ export default function Register() {
     <Form 
       onSubmit={registerClick}
       style={{
-        backgroundColor: "grey",
+        backgroundColor: "rgba(173, 165, 169, 0.8)",
         padding: "1rem",
         borderRadius: "1rem",
         width: "60%",
-        margin: "0 auto"
+        margin: "0 auto",
+        boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
       }}
       >
     
