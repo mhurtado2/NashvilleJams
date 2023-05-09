@@ -10,7 +10,7 @@ const JamDeets = ({ jam }) => {
     <Container>
       <Row>
         <Col md={6}>
-            <Card style={{height: "100%"}} >
+            <Card style={{height: "100%", backgroundColor: "rgba(173, 165, 169, 0.8)"}} >
               <CardBody>
                   <div>
                     <h2>{jam.jamName}</h2>
@@ -19,6 +19,7 @@ const JamDeets = ({ jam }) => {
                     src= {jam.imageUrl} 
                     alt = {jam.jamName}
                     className = "jam-img"
+                    style = {{width: "400px"}}
                     />
                     </div>
                     <p>Venue Name : {jam.venueName}</p>
@@ -32,7 +33,7 @@ const JamDeets = ({ jam }) => {
           </Col>
 
         <Col md={6}>
-          <Card style={{height: "100%"}}>
+          <Card style={{height: "100%", backgroundColor: "rgba(173, 165, 169, 0.8)"}}>
             <CardBody>
               <article>{jam.jamDescription}</article>
             </CardBody>

@@ -51,13 +51,15 @@ const [user, setUser] = useState({});
     );
 };
 
+//added admin features to ternary below line 62
+
   return (
     <div className="container justify-content-center text-center">
 
       <div className="row ml-auto justify-content-center">
           <JamDeets jam={jam} />
           {
-            jam.userId == user.id ? <> <Button className="btn btn-success m-4" style={{width: "350px"}} onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
+            jam.userId == user.id || user.userTypeId === 1 ? <> <Button className="btn btn-success m-4" style={{width: "350px"}} onClick={() => navigate(`edit/${jam.id}`)}>Edit</Button> 
             <Button
             className="btn btn-danger m-4"
             onClick={() => {
