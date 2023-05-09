@@ -44,9 +44,9 @@ const FilteredJam = ({ jam }) => {
                         {jam.jamDescription}
                         </Tooltip>
                 </div>
-                        <p>Venue Name : {jam.venueName}</p>
-                        <p>Area Of Town : {jam.areaOfTown?.name}</p>
-                        <p>Address : {jam.address}</p>
+                        <p><b>Venue Name</b> : <em>{jam.venueName}</em></p>
+                        <p><b>Area Of Town</b> : <em>{jam.areaOfTown?.name}</em></p>
+                        <p><b>Address</b> : <em>{jam.address}</em></p>
             
             </div>
           </div>

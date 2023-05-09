@@ -19,9 +19,9 @@ const Jam = ({ jam }) => {
             style={{width : '300px', height : "200px", margin : '20px'}}
             />
             </div>
-            <div style={{ borderRadius : '20px'}}>
+            <div style={{ borderRadius : '20px', textDecoration : "underline"}}>
               <em>
-              Area Of Town: {jam.areaOfTown?.name}
+              <b>Area Of Town:</b> {jam.areaOfTown?.name}
                 </em>
               </div>
           </div>

@@ -30,7 +30,7 @@ const JamList = () => {
   
   return (
     <>
-    <div>
+    <div style={{backgroundColor: "rgba(242, 243, 244, 1)", borderRadius: "20px"}}>
         <div className="text-center">
         <h2>Find A Jam</h2>
         <JamSearch />

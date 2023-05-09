@@ -15,7 +15,7 @@ import "bootstrap/dist/css/bootstrap.css";
 const UserProfileCard = ({ user }) => {
 
   return (
-    <Card className="shadow-lg" style={{width: "500px", marginBottom: "10px"}}>
+    <Card className="shadow-lg" style={{width: "500px", marginBottom: "10px", backgroundColor: "rgba(173, 165, 169, 0.8)"}}>
       <CardBody key={user.id}>
         <>
             <h2>
@@ -31,13 +31,14 @@ const UserProfileCard = ({ user }) => {
 
 
             <h5>
-                {user.email}
+              <b>Favorite Genres</b>
+                {/* {user.email} */}
             </h5> 
 
             <div>
                 {user.genres && 
                     Array.from(new Set(user.genres.map((genre) => genre.name))).map((name) => (
-                        <li key={name}>{name}</li>
+                        <li key={name}><em>{name}</em></li>
                     ))}
            </div>
 

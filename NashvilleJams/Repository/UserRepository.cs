@@ -163,12 +163,13 @@ namespace NashvilleJams.Repository
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO [User] (FireBaseUserId, FullName, Email)
+                    cmd.CommandText = @"INSERT INTO [User] (FireBaseUserId, FullName, Email, UserTypeId)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FireBaseUserId, @FullName, @Email)";
+                                        VALUES (@FireBaseUserId, @FullName, @Email, @UserTypeId)";
                     DbUtils.AddParameter(cmd, "@FireBaseUserId", user.FireBaseUserId);
                     DbUtils.AddParameter(cmd, "@FullName", user.FullName);
                     DbUtils.AddParameter(cmd, "@Email", user.Email);
+                    DbUtils.AddParameter(cmd, "@UserTypeId", user.UserTypeId);
                     user.Id = (int)cmd.ExecuteScalar();
                 }
             }

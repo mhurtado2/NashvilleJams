@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Button } from "reactstrap";
 import { searchAllJams } from "../modules/jamManager";
 import JamSearchResults from "./JamSearchResults";
 
@@ -17,41 +18,44 @@ const JamSearch = () => {
     return <article>
         <section>
             <div>
-            <input 
-            type = "text"
-            placeholder="Enter Search Terms"
-            onChange={(changeEvent) => {
-                setQueryString(changeEvent.target.value)
-            }}
-            style={{width : "50%", margin : "16px 175px 16px 175px", textAlign : "center", borderRadius : "10px"}} 
-            />
+                <input 
+                type = "text"
+                placeholder="Enter Search Terms"
+                onChange={(changeEvent) => {
+                    setQueryString(changeEvent.target.value)
+                }}
+                style={{width : "50%", margin : "16px 175px 16px 175px", textAlign : "center", borderRadius : "10px"}} 
+                />
             </div>
-        <label>
-            Sort by Descending
-            <input 
-            type = "checkbox"
-            placeholder="Enter Search Terms"
-            onChange={(changeEvent) => {
-                if (changeEvent.target.checked){
-                    setSortDescBool(true)
-                }
-                else {
-                    setSortDescBool(false)
-                    //added this so page would go back once user unselects checkbox
-                    setSearchedJams([]);
-                }
-            }}
-            />
-        </label>
-        <button
-            onClick={() => {
-                searchAllJams(queryString, sortDescBool)
-                .then(response => {
-                    setSearchedJams(response)
-                })
-            }}>
-            Search
-        </button>
+            <div className="justify-content-between">
+                <label>
+                    Sort by Descending
+                    <input 
+                    type = "checkbox"
+                    placeholder="Enter Search Terms"
+                    onChange={(changeEvent) => {
+                        if (changeEvent.target.checked){
+                            setSortDescBool(true)
+                        }
+                        else {
+                            setSortDescBool(false)
+                            //added this so page would go back once user unselects checkbox
+                            setSearchedJams([]);
+                        }
+                    }}
+                    />
+                </label>
+                <Button
+                    style={{ marginLeft : "20px"}}
+                    onClick={() => {
+                        searchAllJams(queryString, sortDescBool)
+                        .then(response => {
+                            setSearchedJams(response)
+                        })
+                    }}>
+                    Search
+                </Button>
+            </div>
         </section>
 
         <section>

@@ -77,7 +77,7 @@ namespace NashvilleJams.Controllers
         public IActionResult Register(User user)
         {
             // All newly registered users start out as a "user" user type e. they are not admins)
-           
+            user.UserTypeId = UserType.AUTHOR_ID;
             _userRepository.Add(user);
             return CreatedAtAction(
                 nameof(GetByFirebaseUserId), new { firebaseUserId = user.FireBaseUserId }, user);
