@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { Button, Form, FormGroup, Label, Input, Container, Row, Col } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Container,
+  Row,
+  Col,
+} from "reactstrap";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../modules/authManager";
-
 
 export default function Login() {
   let navigate = useNavigate();
@@ -18,26 +26,26 @@ export default function Login() {
   };
 
   return (
-    <React.Fragment >
-          <div className="mb-6 mb-4">  
-          <h1 className="mb-6">Welcome To Nashville Jams</h1>
-          </div>
+    <React.Fragment>
+      <div className="mb-6 mb-4">
+        <h1 className="mb-6">Welcome To Nashville Jams</h1>
+      </div>
 
-          <div className="mb-6 mb-4">  
-          <h2 className="mb-6">Login</h2>
-          </div>
+      <div className="mb-6 mb-4">
+        <h2 className="mb-6">
+          <em>Login</em>
+        </h2>
+      </div>
 
-        <Container 
+      <Container
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           // height: "100%"
         }}
-        >
-  
-
-        <Form 
+      >
+        <Form
           onSubmit={loginSubmit}
           style={{
             backgroundColor: "rgba(173, 165, 169, 0.8)",
@@ -48,44 +56,56 @@ export default function Login() {
             margin: "0 auto",
             // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
           }}
-          >
-
-    
-      <fieldset>
-        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="email" style={{ fontWeight: "bold" }} >Email</Label>
-          <Input
-            id="email"
-            type="text"
-            autoFocus
-            onChange={(e) => setEmail(e.target.value)}
-            style={{width : "50%", marginLeft : "1rem" }}
-          />
-        </FormGroup>
-        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="password" style={{ fontWeight: "bold" }} >Password</Label>
-          <Input
-            id="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            style={{width : "50%", marginLeft : "1rem" }}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Button>Login</Button>
-        </FormGroup>
-        <em>
-          Not registered? <Link to="/register">Register</Link>
-        </em>
-      </fieldset>
-    </Form>
-    </Container>
-    <div>
-
-    </div>
-    <div>
-      
-      </div>
+        >
+          <fieldset>
+            <FormGroup
+              className="text-center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Label for="email" style={{ fontWeight: "bold" }}>
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="text"
+                autoFocus
+                onChange={(e) => setEmail(e.target.value)}
+                style={{ width: "50%", marginLeft: "1rem" }}
+              />
+            </FormGroup>
+            <FormGroup
+              className="text-center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Label for="password" style={{ fontWeight: "bold" }}>
+                Password
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ width: "50%", marginLeft: "1rem" }}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Button>Login</Button>
+            </FormGroup>
+            <em>
+              Not registered? <Link to="/register">Register</Link>
+            </em>
+          </fieldset>
+        </Form>
+      </Container>
+      <div></div>
+      <div></div>
     </React.Fragment>
   );
 }

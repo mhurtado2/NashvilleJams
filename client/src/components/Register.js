@@ -23,74 +23,109 @@ export default function Register() {
   };
 
   return (
-
     <>
-    <h2 className="mb-4">Register</h2>
-    <Container 
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      // height: "100%"
-    }}
-    >
-    
-    <Form 
-      onSubmit={registerClick}
-      style={{
-        backgroundColor: "rgba(173, 165, 169, 0.8)",
-        padding: "1rem",
-        borderRadius: "1rem",
-        width: "60%",
-        margin: "0 auto",
-        // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
-      }}
+      <h2 className="mb-4">
+        <em>Register</em>
+      </h2>
+      <Container
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          // height: "100%"
+        }}
       >
-    
-      <fieldset>
-        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label htmlFor="fullName" style={{ fontWeight: "bold" }} >Name</Label>
-          <Input
-            id="fullName"
-            type="text"
-            autoFocus
-            onChange={(e) => setfullName(e.target.value)}
-            style={{width : "50%", marginLeft : "1rem" }}
-          />
-        </FormGroup>
-        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="email" style={{ fontWeight: "bold" }} >Email</Label>
-          <Input
-            id="email"
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-            style={{width : "50%", marginLeft : "1rem" }}
-          />
-        </FormGroup>
-        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="password" style={{ fontWeight: "bold" }} >Password</Label>
-          <Input
-            id="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            style={{width : "50%", marginLeft : "1rem" }}
-          />
-        </FormGroup >
-        <FormGroup className="text-center" style={{display: "flex", flexDirection: "column", alignItems: 'center'}}>
-          <Label for="confirmPassword" style={{ fontWeight: "bold" }} >Confirm Password</Label>
-          <Input
-            id="confirmPassword"
-            type="password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            style={{width : "50%", marginLeft : "1rem" }}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Button>Register</Button>
-        </FormGroup>
-      </fieldset>
-    </Form>
-    </Container>
+        <Form
+          onSubmit={registerClick}
+          style={{
+            backgroundColor: "rgba(173, 165, 169, 0.8)",
+            padding: "1rem",
+            borderRadius: "1rem",
+            width: "60%",
+            margin: "0 auto",
+            // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
+          }}
+        >
+          <fieldset>
+            <FormGroup
+              className="text-center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Label htmlFor="fullName" style={{ fontWeight: "bold" }}>
+                Name
+              </Label>
+              <Input
+                id="fullName"
+                type="text"
+                autoFocus
+                onChange={(e) => setfullName(e.target.value)}
+                style={{ width: "50%", marginLeft: "1rem" }}
+              />
+            </FormGroup>
+            <FormGroup
+              className="text-center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Label for="email" style={{ fontWeight: "bold" }}>
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="text"
+                onChange={(e) => setEmail(e.target.value)}
+                style={{ width: "50%", marginLeft: "1rem" }}
+              />
+            </FormGroup>
+            <FormGroup
+              className="text-center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Label for="password" style={{ fontWeight: "bold" }}>
+                Password
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ width: "50%", marginLeft: "1rem" }}
+              />
+            </FormGroup>
+            <FormGroup
+              className="text-center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Label for="confirmPassword" style={{ fontWeight: "bold" }}>
+                Confirm Password
+              </Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                style={{ width: "50%", marginLeft: "1rem" }}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Button>Register</Button>
+            </FormGroup>
+          </fieldset>
+        </Form>
+      </Container>
     </>
   );
 }
