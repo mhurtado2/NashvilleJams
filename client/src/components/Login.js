@@ -20,7 +20,11 @@ export default function Login() {
   return (
     <>
           <div className="mb-6 mb-4">  
-          <h2 className="mb-6">Welcome To Nashville Jams!</h2>
+          <h1 className="mb-6">Welcome To Nashville Jams</h1>
+          </div>
+
+          <div className="mb-6 mb-4">  
+          <h2 className="mb-6">Login</h2>
           </div>
 
         <Container 
