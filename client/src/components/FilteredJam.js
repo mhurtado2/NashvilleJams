@@ -20,7 +20,7 @@ const FilteredJam = ({ jam }) => {
   return (
     
     <Card className="d-flex flex-wrap justify-content-between shadow mb-2">
-      <CardBody >
+      <CardBody style={{backgroundColor: "rgba(173, 165, 169, 0.8)"}}>
           <div>
               <h2>{jam.jamName}</h2>
                <div>
@@ -32,7 +32,7 @@ const FilteredJam = ({ jam }) => {
                       src= {jam.imageUrl} 
                       alt = {jam.jamName}
                       className = "jam-img"
-                      style={{width : '300px', height : "200px", margin : '20px'}}
+                      style={{width : '400px', height : "200px", margin : '20px'}}
                       />
                         <Tooltip
                             placement="right"

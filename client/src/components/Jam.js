@@ -8,7 +8,7 @@ const Jam = ({ jam }) => {
    
   return (
     <Card className="d-flex flex-row mb-2">
-      <CardBody>
+      <CardBody style={{backgroundColor: "rgba(173, 165, 169, 0.8)"}}>
           <div>
             <Link to={`details/${jam.id}`}>{jam.jamName}</Link>
             <div>
