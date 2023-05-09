@@ -31,7 +31,7 @@ export default function Register() {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height: "100%"
+      // height: "100%"
     }}
     >
     

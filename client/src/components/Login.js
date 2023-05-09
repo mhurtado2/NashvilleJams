@@ -18,7 +18,7 @@ export default function Login() {
   };
 
   return (
-    <>
+    <React.Fragment >
           <div className="mb-6 mb-4">  
           <h1 className="mb-6">Welcome To Nashville Jams</h1>
           </div>
@@ -32,7 +32,7 @@ export default function Login() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100%"
+          // height: "100%"
         }}
         >
   
@@ -80,7 +80,13 @@ export default function Login() {
       </fieldset>
     </Form>
     </Container>
-    </>
+    <div>
+
+    </div>
+    <div>
+      
+      </div>
+    </React.Fragment>
   );
 }
 

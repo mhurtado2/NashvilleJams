@@ -21,7 +21,7 @@ import UserProfiles from "./UserProfiles";
 export default function ApplicationViews({ isLoggedIn }) {
   return (
 
-      
+    <main className="vh-100">
     <Routes>
       <Route path="/">
         <Route
@@ -45,6 +45,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         <Route path="*" element={<p>Whoops, nothing here...</p>} />
       </Route>
     </Routes>
+    </main>
     
   );
 }

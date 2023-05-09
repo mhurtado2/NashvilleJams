@@ -16,7 +16,7 @@ export default function Header({ isLoggedIn, userProfile }) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div className="navBar">
+    <div className="navBar h-100">
       <Navbar color="dark" className="m-2" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
            <img 
