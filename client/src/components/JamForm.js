@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, FormGroup, Label, FormText, Tooltip } from "reactstrap";
+import { Button, Form, FormGroup, Label, Tooltip } from "reactstrap";
 import { getAllAreas } from "../modules/areaManager";
-import { me } from "../modules/authManager";
 import { getAllGenres } from "../modules/genreManager";
 import { addJam } from "../modules/jamManager";
-import { addUserGenre, getUserGenres } from "../modules/userGenreManager";
 
-const JamForm = ({ getJam }) => {
+//passed in as prop { getJam }
+const JamForm = () => {
   const emptyJam = {
     jamName: "",
     venueName: "",

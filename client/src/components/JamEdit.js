@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label } from "reactstrap";
 import { getAllAreas } from "../modules/areaManager";
 import { getAllGenres } from "../modules/genreManager";
 import { getJamById, updateJam } from "../modules/jamManager";
@@ -63,6 +63,7 @@ const JamEdit = () => {
             width: "60%",
             height: "50%",
             margin: "0 auto",
+            //zombie alert
             // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
             border: "2px solid black",
           }}

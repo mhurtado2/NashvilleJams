@@ -1,13 +1,4 @@
-import { useState } from "react";
-import {
-  Button,
-  Card,
-  CardBody,
-  Modal,
-  ModalBody,
-  ModalFooter,
-} from "reactstrap";
-import { Link } from "react-router-dom";
+import { Card, CardBody } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
 const UserProfileCard = ({ user }) => {
@@ -34,7 +25,6 @@ const UserProfileCard = ({ user }) => {
 
           <h5>
             <b>Favorite Genres</b>
-            {/* {user.email} */}
           </h5>
 
           <div>

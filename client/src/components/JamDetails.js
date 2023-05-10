@@ -51,8 +51,6 @@ const JamDetails = () => {
     );
   };
 
-  //added admin features to ternary below line 62
-
   return (
     <div className="container justify-content-center text-center">
       <div className="row ml-auto justify-content-center">

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Button, Container, Modal, ModalBody, ModalFooter } from "reactstrap";
-import { deleteJam, getAllJams, getJamCount } from "../modules/jamManager";
+import { getAllJams, getJamCount } from "../modules/jamManager";
 import Jam from "./Jam";
 import JamSearch from "./JamSearch";
 

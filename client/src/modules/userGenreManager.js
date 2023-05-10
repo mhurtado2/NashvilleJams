@@ -1,11 +1,8 @@
-import { getToken } from "./authManager";
-
 const _apiUrl = "/api/userGenre";
 
 export const getUserGenres = () => {
-    return fetch(_apiUrl)
-      .then((res) => res.json())
-  };
+  return fetch(_apiUrl).then((res) => res.json());
+};
 
 //   export const addUserGenre = (userGenre) => {
 //     return getToken().then((token) => {
@@ -30,18 +27,15 @@ export const getUserGenres = () => {
 //     });
 // };
 
-
 export const addUserGenre = (userGenre) => {
-    return fetch(_apiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userGenre),
-    });
-  };
-  
-
+  return fetch(_apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userGenre),
+  });
+};
 
 // export const deleteUserGenre = (id) => {
 //     return getToken().then((token) => {

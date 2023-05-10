@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { Card, CardBody, Tooltip } from "reactstrap";
 
 const FilteredJam = ({ jam }) => {

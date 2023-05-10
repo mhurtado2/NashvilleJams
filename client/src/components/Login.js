@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Container } from "reactstrap";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../modules/authManager";
 
@@ -54,6 +45,7 @@ export default function Login() {
             width: "60%",
             height: "50%",
             margin: "0 auto",
+            //zombie
             // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
           }}
         >
@@ -109,5 +101,3 @@ export default function Login() {
     </React.Fragment>
   );
 }
-
-//ypo
