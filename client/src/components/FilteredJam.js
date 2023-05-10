@@ -32,7 +32,7 @@ const FilteredJam = ({ jam }) => {
                 style={{ width: "400px", height: "200px", margin: "20px" }}
               />
               <Tooltip
-                placement="right"
+                placement="bottom"
                 isOpen={tooltipOpen}
                 target={`img${jam.id}`}
                 toggle={toggleTooltip}
