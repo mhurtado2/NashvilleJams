@@ -76,7 +76,7 @@ const JamEdit = () => {
             className="form-control text-center"
             value={jam.jamName}
             onChange={handleInputChange}
-            style={{ width: "60%", margin: "16px 16px 16px 250px" }}
+            style={{ width: "60%", margin: "16px 16px 16px 200px" }}
           />
 
           <Label for="venueName" style={{ fontWeight: "bold" }}>
@@ -89,7 +89,7 @@ const JamEdit = () => {
             className="form-control text-center"
             value={jam.venueName}
             onChange={handleInputChange}
-            style={{ width: "60%", margin: "16px 16px 16px 250px" }}
+            style={{ width: "60%", margin: "16px 16px 16px 200px" }}
           />
 
           <Label for="address" style={{ fontWeight: "bold" }}>
@@ -102,7 +102,7 @@ const JamEdit = () => {
             className="form-control text-center"
             value={jam.address}
             onChange={handleInputChange}
-            style={{ width: "60%", margin: "16px 16px 16px 250px" }}
+            style={{ width: "60%", margin: "16px 16px 16px 200px" }}
           />
 
           <Label for="imageUrl" style={{ fontWeight: "bold" }}>
@@ -115,7 +115,7 @@ const JamEdit = () => {
             className="form-control text-center"
             value={jam.imageUrl}
             onChange={handleInputChange}
-            style={{ width: "60%", margin: "16px 16px 16px 250px" }}
+            style={{ width: "60%", margin: "16px 16px 16px 200px" }}
           />
 
           <Label for="jamDescription" style={{ fontWeight: "bold" }}>
@@ -128,7 +128,7 @@ const JamEdit = () => {
             className="form-control"
             value={jam.jamDescription}
             onChange={handleInputChange}
-            style={{ width: "60%", margin: "16px 16px 16px 250px" }}
+            style={{ width: "60%", margin: "16px 16px 16px 200px" }}
           />
 
           <Label for="genreId" style={{ fontWeight: "bold" }}>
@@ -139,7 +139,7 @@ const JamEdit = () => {
             className="form-control text-center"
             value={jam.genreId}
             onChange={handleInputChange}
-            style={{ width: "60%", margin: "16px 16px 16px 250px" }}
+            style={{ width: "60%", margin: "16px 16px 16px 200px" }}
           >
             <option value="">-- Select Genre --</option>
             {genres.map((genre) => (
@@ -157,7 +157,7 @@ const JamEdit = () => {
             className="form-control text-center"
             value={jam.areaOfTownId}
             onChange={handleInputChange}
-            style={{ width: "60%", margin: "16px 16px 16px 250px" }}
+            style={{ width: "60%", margin: "16px 16px 16px 200px" }}
           >
             <option value="">-- Select Area Of Town --</option>
             {areas.map((area) => (

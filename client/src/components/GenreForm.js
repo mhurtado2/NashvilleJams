@@ -66,7 +66,7 @@ const GenreForm = () => {
               className="form-control"
               value={genre.Name}
               onChange={handleInputChange}
-              style={{ width: "60%", margin: "16px 16px 16px 400px" }}
+              style={{ width: "60%", margin: "16px 16px 16px 350px" }}
             />
           </React.Fragment>
         </FormGroup>

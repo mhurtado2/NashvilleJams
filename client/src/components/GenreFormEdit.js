@@ -56,10 +56,15 @@ const GenreFormEdit = () => {
             </Label>
             <select
               id="genreId"
-              className="form-control text-center form-control-sm"
+              className="form-control form-control-sm"
               value={selectedGenre?.Id}
               onChange={handleInputChange}
-              style={{ width: "60%", margin: "16px 16px 16px 400px" }}
+              style={{
+                width: "60%",
+                margin: "16px 16px 16px 350px",
+                textAlign: "center",
+                paddingRight: "10px",
+              }}
             >
               <option value="">-- Select Genre --</option>
               {genres.map((genre) => (
@@ -87,7 +92,7 @@ const GenreFormEdit = () => {
               onChange={(e) =>
                 setSelectedGenre({ ...selectedGenre, name: e.target.value })
               }
-              style={{ width: "60%", margin: "16px 16px 16px 400px" }}
+              style={{ width: "60%", margin: "16px 16px 16px 350px" }}
             />
 
             <Button className="btn btn-success m-4" onClick={handleSave}>

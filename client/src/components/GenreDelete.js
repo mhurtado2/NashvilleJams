@@ -52,7 +52,7 @@ const GenreDelete = () => {
               className="form-control text-center form-control-sm"
               value={selectedGenre?.Id}
               onChange={handleInputChange}
-              style={{ width: "60%", margin: "16px 16px 16px 400px" }}
+              style={{ width: "60%", margin: "16px 16px 16px 350px" }}
             >
               <option value="">-- Select Genre --</option>
               {genres.map((genre) => (
