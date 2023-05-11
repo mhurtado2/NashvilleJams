@@ -133,11 +133,15 @@ namespace NashvilleJams.Repository
                               FROM [User]
                          WHERE FireBaseUserId = @FireBaseUserId";
 
+                    //this line adds firebase parameter to command object
                     DbUtils.AddParameter(cmd, "@FireBaseUserId", firebaseUserId);
 
+                    //initializes User object variable user with a null value
                     User user = null;
 
                     var reader = cmd.ExecuteReader();
+
+                    //this line checks for a record to read from the data reader, if there is code runs
                     if (reader.Read())
                     {
                         user = new User()
