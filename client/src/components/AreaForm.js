@@ -6,8 +6,6 @@ import { me } from "../modules/authManager";
 import AreaDelete from "./AreaDelete";
 import AreaFormEdit from "./AreaFormEdit";
 
-//passed in as prop { getArea }
-
 const AreaForm = () => {
   const emptyArea = {
     Name: "",

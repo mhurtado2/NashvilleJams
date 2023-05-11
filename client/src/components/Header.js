@@ -19,16 +19,20 @@ export default function Header({ isLoggedIn, userProfile }) {
     <div className="navBar h-100">
       <Navbar color="dark" className="m-2" dark expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-           <img 
-            src= "https://th.bing.com/th/id/R.12fd188a3ad1053da103f80f2d97fc97?rik=HJPHmS7t6HFDKA&riu=http%3a%2f%2fsouthparktavern.com%2fwp-content%2fuploads%2f2018%2f10%2fGuitar.png&ehk=DJmGipKcMBe7OOqVIBgwFo%2fv84Ygu9y%2bs893P%2bUXM30%3d&risl=&pid=ImgRaw&r=0"
-            alt = "Nashville Jams"
-            className = ""
-            style={{width : '80px'}}
-            />
+          <img
+            src="https://th.bing.com/th/id/R.12fd188a3ad1053da103f80f2d97fc97?rik=HJPHmS7t6HFDKA&riu=http%3a%2f%2fsouthparktavern.com%2fwp-content%2fuploads%2f2018%2f10%2fGuitar.png&ehk=DJmGipKcMBe7OOqVIBgwFo%2fv84Ygu9y%2bs893P%2bUXM30%3d&risl=&pid=ImgRaw&r=0"
+            alt="Nashville Jams"
+            className=""
+            style={{ width: "80px" }}
+          />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="m1-auto" navbar style={{ justifyContent: 'space-between', width: '100%'}}>
+          <Nav
+            className="m1-auto"
+            navbar
+            style={{ justifyContent: "space-between", width: "100%" }}
+          >
             {isLoggedIn && (
               <>
                 <NavItem>

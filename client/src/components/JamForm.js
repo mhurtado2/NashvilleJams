@@ -5,7 +5,6 @@ import { getAllAreas } from "../modules/areaManager";
 import { getAllGenres } from "../modules/genreManager";
 import { addJam } from "../modules/jamManager";
 
-//passed in as prop { getJam }
 const JamForm = () => {
   const emptyJam = {
     jamName: "",
@@ -71,7 +70,6 @@ const JamForm = () => {
             width: "60%",
             height: "50%",
             margin: "0 auto",
-            // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
             border: "2px solid black",
           }}
         >

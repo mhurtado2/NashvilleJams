@@ -63,8 +63,6 @@ const JamEdit = () => {
             width: "60%",
             height: "50%",
             margin: "0 auto",
-            //zombie alert
-            // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)"
             border: "2px solid black",
           }}
         >

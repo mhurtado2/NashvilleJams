@@ -7,7 +7,6 @@ import {
   updateGenre,
 } from "../modules/genreManager";
 
-//passed in as prop { getGenre }
 const GenreFormEdit = () => {
   //get genres
   const [genres, setGenres] = useState([]);

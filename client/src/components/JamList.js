@@ -21,8 +21,6 @@ const JamList = () => {
     getJamsInNash();
   }, []); //only runs on the intial rendering of the page if dependency array is empty
 
-  //react component
-
   return (
     <>
       <div className="h-100 vh-100">

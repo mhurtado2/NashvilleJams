@@ -6,7 +6,6 @@ import { register } from "../modules/authManager";
 export default function Register() {
   const navigate = useNavigate();
 
-  //change name to fullName
   const [fullName, setfullName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();

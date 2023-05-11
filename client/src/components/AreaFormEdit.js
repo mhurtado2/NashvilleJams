@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button, Form, FormGroup, Label } from "reactstrap";
 import { getAllAreas, getAreaById, updateArea } from "../modules/areaManager";
 
-//passed in as prop { getArea })
 const AreaFormEdit = () => {
   //get areas
   const [areas, setAreas] = useState([]);

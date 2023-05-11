@@ -7,7 +7,6 @@ import {
   getGenreById,
 } from "../modules/genreManager";
 
-//passed in as prop { getGenre }
 const GenreDelete = () => {
   //get genres
   const [genres, setGenres] = useState([]);

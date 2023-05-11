@@ -6,7 +6,6 @@ import { addGenre } from "../modules/genreManager";
 import GenreDelete from "./GenreDelete";
 import GenreFormEdit from "./GenreFormEdit";
 
-//passed in as prop before { getGenre }
 const GenreForm = () => {
   const emptyGenre = {
     Name: "",
