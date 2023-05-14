@@ -27,5 +27,19 @@ Features
 
    - Clone down this repository.
    - Ensure node and npm are installed on your machine.
-   
-## Demo 
+ 
+ ## Demo
+ 
+-Login and Register 
+![](loginandregister.gif)
+-Homepage Details
+![](details.gif)
+- Homepage searchbar
+![](searchbar.gif)
+- Filtered Jam
+![](filteredJam.gif)
+- Add Jam, Add Genre
+![](newjam.gif)
+![](addgenre.gif)
+- User Profiles 
+![](profilesandlogout.gif)
