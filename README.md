@@ -18,3 +18,14 @@ Features
    - Reactstrap: Reactstrap is used to create responsive and mobile-friendly user interfaces.
    - Firebase: Firebase is utilized for user authentication and data storage.
    - SQL Server: SQL Server is used as the database to store jams, genres, areas of town, user profiles, and favorite genres.
+
+## WireFrames
+
+`` - https://dbdiagram.io/d/644554aa6b319470510d1315
+
+## Installation
+
+   - Clone down this repository.
+   - Ensure node and npm are installed on your machine.
+   
+## Demo 
