@@ -40,6 +40,6 @@ Features
 ![](filteredJam.gif)
 - Add Jam, Add Genre
 ![](newjam.gif)
-![](addgenre.gif)
+![](addgenretwo.gif)
 - User Profiles 
 ![](profilesandlogout.gif)
