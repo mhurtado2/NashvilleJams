@@ -30,16 +30,16 @@ Features
  
  ## Demo
  
--Login and Register 
-![](loginandregister.gif)
--Homepage Details
-![](details.gif)
+- Login and Register 
+- ![](loginandregister.gif)
+- Homepage Details
+- ![](details.gif)
 - Homepage searchbar
-![](searchbar.gif)
+- ![](searchbar.gif)
 - Filtered Jam
-![](filteredJam.gif)
+- ![](filteredJam.gif)
 - Add Jam, Add Genre
-![](newjam.gif)
-![](addgenretwo.gif)
+- ![](newjam.gif)
+- ![](addgenretwo.gif)
 - User Profiles 
-![](profilesandlogout.gif)
+- ![](profilesandlogout.gif)
