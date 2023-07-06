@@ -4,8 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using NashvilleJams.Model;
 using NashvilleJams.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 
 namespace NashvilleJams.Repository
 {
@@ -137,6 +139,7 @@ namespace NashvilleJams.Repository
                     DbUtils.AddParameter(cmd, "@FireBaseUserId", firebaseUserId);
 
                     //initializes User object variable user with a null value
+                    //to account for when a user is not found
                     User user = null;
 
                     var reader = cmd.ExecuteReader();
@@ -161,20 +164,44 @@ namespace NashvilleJams.Repository
         }
 
         public void Add(User user)
+        //This is the method declaration. It takes a User object as a parameter and does not return any value (void).
         {
             using (var conn = Connection)
+               // This line declares and initializes a connection(conn) using a Connection property or variable.
+               // The using statement ensures that the connection is properly disposed of when it's no longer needed.
             {
                 conn.Open();
+                //this line opens connection
+
                 using (var cmd = conn.CreateCommand())
+
+                //This line declares and initializes a command (cmd) associated with the connection.
+                //The CreateCommand method creates a new instance of the command object.
                 {
                     cmd.CommandText = @"INSERT INTO [User] (FireBaseUserId, FullName, Email, UserTypeId)
                                         OUTPUT INSERTED.ID
                                         VALUES (@FireBaseUserId, @FullName, @Email, @UserTypeId)";
+
+                    //This sets the SQL command text for the command object.
+                    //It contains an INSERT statement that inserts a new row into the [User] table.
+                    //The OUTPUT INSERTED.ID clause retrieves the auto-generated ID value of the newly inserted row.
+                    //The @FireBaseUserId, @FullName, @Email, and @UserTypeId are parameters that will be replaced with the corresponding values
+                    //from the user object.
+
                     DbUtils.AddParameter(cmd, "@FireBaseUserId", user.FireBaseUserId);
                     DbUtils.AddParameter(cmd, "@FullName", user.FullName);
                     DbUtils.AddParameter(cmd, "@Email", user.Email);
                     DbUtils.AddParameter(cmd, "@UserTypeId", user.UserTypeId);
+
+                //    cmd: The cmd command object to which the parameter will be added.
+                //parameterName: The name of the parameter, starting with @ symbol followed by the parameter name(e.g., @FireBaseUserId).
+                 // parameterValue: The value of the parameter, obtained from the corresponding
+                 // property of the user object(user.FireBaseUserId, user.FullName, user.Email, user.UserTypeId).
+
                     user.Id = (int)cmd.ExecuteScalar();
+                    //This line executes the command and retrieves the auto-generated ID value of the newly inserted user.
+                    //The ExecuteScalar method is used because the query returns a single scalar value (the inserted ID).
+                    //The returned value is cast to an int and assigned to the Id property of the user object.
                 }
             }
         }
