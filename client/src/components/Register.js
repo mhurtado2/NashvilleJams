@@ -11,13 +11,49 @@ export default function Register() {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
-  const registerClick = (e) => {
+  // const registerClick = (e) => {
+  //   e.preventDefault();
+  //   if (password && password !== confirmPassword) {
+  //     alert("Passwords don't match. Do better.");
+  //   } else {
+  //     const userProfile = { fullName, email };
+  //     register(userProfile, password)
+  //       .then(() => navigate("/"))
+  //       //catch is fucked up still
+  //       .catch(() => alert("Registration Failed"));
+  //   }
+  // };
+
+  // The registerClick function is declared as async, which allows you to use the await keyword
+
+  // to wait for the register function to resolve or reject.
+
+  // Inside the try block, the register function is called and awaited.
+
+  // If the register function rejects with an error, the code execution jumps to the catch block.
+
+  // In the catch block, the error is caught, and the alert is displayed to
+
+  // indicate that the registration failed
+
+  // This approach provides a more linear and readable code structure,
+
+  // as the error handling is contained within the try-catch block.
+
+  // It avoids nested callbacks and allows you to handle errors in a more centralized manner
+
+  const registerClick = async (e) => {
     e.preventDefault();
     if (password && password !== confirmPassword) {
       alert("Passwords don't match. Do better.");
     } else {
-      const userProfile = { fullName, email };
-      register(userProfile, password).then(() => navigate("/"));
+      try {
+        const userProfile = { fullName, email };
+        await register(userProfile, password);
+        navigate("/");
+      } catch (error) {
+        alert("Registration Failed");
+      }
     }
   };
 
